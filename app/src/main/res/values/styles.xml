@@ -1,0 +1,64 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- Menu item text lowercase applied-->
+        <item name="actionButtonStyle">@style/AppTheme.Widget.ActionButton</item>
+
+        <!-- Edit text bottom line color when not selected -->
+        <item name="colorControlNormal">@color/colorHint</item>
+        <!-- When selected edit text bottom line color cursor color upper hint color -->
+        <item name="colorControlActivated">@color/colorPrimary</item>
+
+        <!--option menu background-->
+        <item name="android:itemBackground">@color/background_color_separator</item>
+        <item name="android:popupElevation">10dp</item>
+    </style>
+
+    <!--Custom Style for switch Applies only for Switch-->
+    <style name="SwitchTheme" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">#006EB8</item>
+    </style>
+
+    <!-- SplashActivity theme. -->
+    <style name="AppThemeForMainActivity" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- Menu item text lowercase applied-->
+        <item name="actionButtonStyle">@style/AppTheme.Widget.ActionButton</item>
+
+        <!-- Edit text bottom line color when not selected -->
+        <item name="colorControlNormal">@color/colorHint</item>
+        <!-- When selected edit text bottom line color cursor color upper hint color -->
+        <item name="colorControlActivated">@color/colorHint</item>
+    </style>
+
+    <!-- Used for menu item text lowercase -->
+    <style name="AppTheme.Widget.ActionButton" parent="@style/Widget.AppCompat.ActionButton">
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>

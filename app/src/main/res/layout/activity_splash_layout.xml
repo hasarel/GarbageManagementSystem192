@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    tools:context=".activity.SplashActivity">
+
+  <ImageView
+      android:id="@+id/home_page_logo"
+      android:layout_width="140dp"
+      android:layout_marginLeft="60dp"
+      android:layout_height="140dp"
+      android:background="@drawable/logo" />
+
+  <TextView
+      android:id="@+id/home_page_text"
+      android:layout_below="@id/home_page_logo"
+      android:text="Garbage Management System"
+      android:textSize="20dp"
+      android:textStyle="bold"
+      android:layout_marginTop="20dp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"/>
+
+</RelativeLayout>

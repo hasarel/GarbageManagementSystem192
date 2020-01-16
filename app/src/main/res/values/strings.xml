@@ -1,0 +1,304 @@
+<resources>
+    <string name="app_name">Garbage Management System</string>
+
+
+    <!--Activity Forget password-->
+    <string name="activity_forget_password_tv_text">Forgotten Password</string>
+    <string name="activity_forgetn_password_btn_submit">Submit</string>
+    <string name="activity_forget_password_et_email">Email</string>
+    <!--end of  forget password-->
+
+    <string name="facebook_app_id">539936533274024</string>
+    <string name="fb_login_protocol_scheme">fb539936533274024</string>
+
+    <string name="payment_sucess">Payment Successfully..</string>
+    <string name="payment_sucess2">Thank you for completing the online payment process,your transaction has been processed successfully.. </string>
+
+    <!--Activity Login-->
+    <string name="activity_login_et_username">Username</string>
+    <string name="activity_login_et_password">Password</string>
+    <string name="activity_login_tv_forget_password">Forget Password ?</string>
+    <string name="activity_login_tv_register">New User ? Register Here...</string>
+    <string name="activity_login_btn_login">Login</string>
+    <string name="activity_login_tv__text">Or Connect Using </string>
+    <string name="activity_login_tv_remainder">Remainder me</string>
+    <string name="activity_login_btn_faceboook_login">Log in with FaceBook</string>
+    <!--End of Login Activity-->
+
+    <!--Activity Register-->
+    <string name="activity_register_et_fname">First name</string>
+    <string name="activity_register_et_lname">Last name</string>
+    <string name="activity_register_et_Address1">Address Line 1</string>
+    <string name="activity_register_et_Address2">Address Line 2</string>
+    <string name="activity_register_et_Street">Street</string>
+    <string name="activity_register_et_nic">NIC</string>
+    <string name="activity_register_et_contactNo">Contact No</string>
+    <string name="activity_register_et_location">Location</string>
+    <string name="activity_register_et_email">Email</string>
+    <string name="activity_register_et_password">Password</string>
+    <string name="activity_register_et_comPassword">Confirm Password</string>
+    <string name="activity_register_et_submit">Submit</string>
+
+    <!--End of Register Activity-->
+
+    <!--Activity Home Page-->
+    <string name="activity_home_page_btn_getStart">Get Start</string>
+    <!--End of Home PAge Activity-->
+
+    <string name="layout_item_button_name">Location</string>
+
+    <!--Activity Add Request-->
+    <string name="activity_add_request_tv_text">Add Request</string>
+    <string name="activity_add_request_tv_category">Garbage Category Type</string>
+    <string name="activity_add_request_tv_area">Select Your Area</string>
+    <string name="activity_add_request_tv_description">Description</string>
+    <string name="activity_add_request_et_hint_description">Please Type Here Your Description...</string>
+    <string name="activity_add_request_et_location_hint">Your Location Longitude</string>
+    <string name="activity_add_request_et_location_hint2">Your Location Latitude</string>
+    <string name="activity_add_request_btn_progress">Progress</string>
+    <!--End of Add Request-->
+
+    <!--Activity Add Payment-->
+    <string name="activity_add_payment_tv_text">Add a Credit/Debit Card</string>
+    <string name="activity_add_payment_et_card_no">Card number</string>
+    <string name="activity_add_payment_et_month">MM</string>
+    <string name="activity_add_payment_et_year">YY</string>
+    <string name="activity_add_payment_et_security_code">Security Code</string>
+    <string name="activity_add_payment_et_fname">First name</string>
+    <string name="activity_add_payment_btn_done">Done</string>
+    <string name="activity_add_payment_et_lname">Last name</string>
+    <!--End of Add Payment Activity-->
+
+    <string name="activity_register">Register</string>
+    <string name="activity_forgetPassword">Forget Password</string>
+    <string name="activity_addrequest">Add Request</string>
+    <string name="activity_addpayment">Add Payment</string>
+    <string name="activity_paymenthistoery">Payment History</string>
+    <string name="activity_request_history">Request History</string>
+    <string name="activity_about">About</string>
+    <string name="activity_customer_request">Customer Request</string>
+
+
+    <!--navigation drawer item labels-->
+    <string name="nav_item_1">Home</string>
+    <string name="nav_item_2">Payment History</string>
+    <string name="nav_item_sync">Request History</string>
+    <string name="nav_item_about">About</string>
+    <string name="nav_item_logout">Logout</string>
+
+    <string-array name="nav_drawer_labels">
+        <item>@string/nav_item_1</item>
+        <item>@string/nav_item_2</item>
+        <item>@string/nav_item_sync</item>
+        <item>@string/nav_item_about</item>
+        <item>@string/nav_item_logout</item>
+    </string-array>
+
+    <!-- drawer open-close -->
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+    <string name="error_text">Error</string>
+    <string name="success_text">Success</string>
+    <string name="sign_out_text">Sign Out</string>
+    <string name="no_internet_connection_text">No Internet connection</string>
+    <string name="no_data_fetched">No any data fetched!</string>
+    <string name="turn_on_internet_connection_text">You have no active internet connection on this device. Please turn on mobile data or connect to wifi to proceed</string>
+    <string name="sign_out_message">Are you sure you want to sign out.</string>
+    <string name="want_to_proceed_message">Do you want to proceed?</string>
+    <string name="fill_all_fields_message">Please fill all fields</string>
+    <string name="fill_email_fields_message">Please fill email field</string>
+    <string name="fill_password_fields_message">Please fill password field</string>
+    <string name="operations_failed_message">Operations failed.\nPlease try again.</string>
+    <string name="settings_text">Settings</string>
+    <string name="alert_text">Alert</string>
+    <string name="alert_warning_text">Error</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="yes_text">Yes</string>
+    <string name="update_text">Update</string>
+    <string name="remove_text">Remove</string>
+    <string name="no_text">No</string>
+    <string name="ok_text">OK</string>
+    <string name="delete_text">Delete</string>
+    <string name="search_text">Search</string>
+    <string name="submit_text">Submit</string>
+    <string name="device_not_compatible_text">Device not compatible</string>
+    <string name="text_success">Success</string>
+    <string name="text_update_success">Successfully Updated</string>
+
+    <!--End of General Usage area-->
+
+    <!--SplashActivity-->
+    <string name="splash_activity_sankaraa_text">Â© 2019 Sankaraa Pvt Ltd</string>
+    <!--End of Splash Activity area-->
+
+    <!--Login Activity-->
+    <string name="login_activity_fill_all_fields_message_text">Please fill all fields</string>
+    <string name="login_activity_account_number_saved_message_text">Account number saved</string>
+    <!--LoginActivity hints-->
+    <string name="login_activity_user_email_hint">User email</string>
+    <string name="login_activity_user_password_hint">Password</string>
+    <string name="login_activity_account_number_hint">Account number</string>
+    <string name="login_activity_change_account_number_text">Change account no</string>
+    <string name="login_activity_login_button_text">Login</string>
+    <!--End of Login Activity area-->
+
+    <!--MainActivity-->
+    <string name="main_activity_title">My Dashboard</string>
+    <!--MainActivity hints-->
+    <string name="main_activity_reminders_text_hint">Reminders</string>
+    <string name="main_activity_todo_text_hint">To Do</string>
+    <string name="main_activity_my_visits">My Visits</string>
+    <string name="main_activity_my_activities">My Activities</string>
+    <string name="main_activity_short_cuts">Short Cuts</string>
+    <!--End of MainActivity area-->
+
+    <!--SyncActivityLog-->
+    <string name="sync_activity_title">Sync Log</string>
+    <string name="sync_activity_action_log_title">Sync Action Data</string>
+    <string name="sync_activity_image_log_title">Sync Attachments</string>
+    <string name="sync_activity_create_log_title">Create New</string>
+
+    <!--AboutActivity-->
+    <string name="about_activity_title">About</string>
+    <!--End of AboutActivity area-->
+
+    <!--GlobalSearchActivity-->
+    <string name="global_search_activity_title">Global Search</string>
+    <!--GlobalSearchActivity hints-->
+    <!--End of GlobalSearchActivity area-->
+
+    <!--QuoteForApprovalListActivity-->
+    <string name="quote_for_approval_list_activity_title">Quote for Approvals</string>
+    <!--QuoteForApprovalListActivity hints-->
+    <string name="quote_for_approval_approve_button_text">Approve</string>
+    <string name="quote_for_approval_reject_button_text">Reject</string>
+    <!--End of QuoteForApprovalListActivity-->
+
+    <!--AppointmentListActivity-->
+    <string name="appointment_list_activity_title">Appointment Task</string>
+    <string name="phone_calls_list_activity_title">Phone Call Task</string>
+    <string name="general_task_list_activity_title">General Task</string>
+    <!--AppointmentListActivity hints-->
+    <!--End of AppointmentListActivity-->
+
+    <!--TaskListActivity-->
+    <string name="task_list_activity_title">Tasks</string>
+    <!--TaskListActivity hints-->
+    <!--End of TaskListActivity-->
+
+    <!--TaskDetailsActivity-->
+    <string name="task_details_activity_title">Task Details</string>
+    <!--TaskDetailsActivity hints-->
+    <string name="task_details_actions_button_text">Actions</string>
+    <string name="task_details_attach_button_text">Attachment</string>
+    <string name="task_details_attach_button_view_text">View Attach</string>
+
+    <string name="task_details_print_button_text">Print</string>
+    <string name="task_details_view_attachments_text"><u>View Attachments</u></string>
+    <!--End of TaskDetailsActivity-->
+
+    <!--ServiceOrderListActivity-->
+    <string name="service_order_list_activity_title">My Service Visits</string>
+    <!--ServiceOrderListActivity hints-->
+    <string name="service_order_list_instructions_given_text">Instructions Given:</string>
+    <!--End of ServiceOrderListActivity-->
+
+
+    <!--ServiceOrderDetailsActivity-->
+    <string name="service_order_details_activity_title">Service Order Details</string>
+    <!--ServiceOrderDetailsActivity hints-->
+    <string name="service_order_details_instructions_given_text">Incoming Notes:</string>
+    <string name="service_order_details_actions_completed_text">Actions Completed:</string>
+    <string name="service_order_details_actions_completed_hint">Actions Completed</string>
+    <string name="title_activity_employee_list">Select User</string>
+    <!--End of ServiceOrderDetailsActivity-->
+
+    <string name="dashboard_home_btn">Home</string>
+    <string name="dashboard_analytics_btn">Analytics</string>
+
+    <string name="syc_action_data_btn">Action Log</string>
+    <string name="sync_create_new_btn">Create New Log</string>
+
+    <string name="service_order_details_history_text">History Notes</string>
+    <string name="service_order_details_outgoing_notes_text">Outgoing Notes : </string>
+    <string name="service_order_details_observations_text">Observation</string>
+    <string name="service_order_details_observation_hint">Type observation</string>
+    <string name="service_order_details_recommendation_text">Recommendation</string>
+    <string name="service_order_details_recommendation_hint">Type recommendation</string>
+    <string name="service_order_details_conclusion_text">Conclusion</string>
+    <string name="service_order_details_conclusion_hint">Type conclusion</string>
+    <string name="menu_service_outgoing_notes_recommendation">Recommendation</string>
+    <string name="menu_service_outgoing_notes_observation">Observation</string>
+    <string name="menu_service_outgoing_notes_conclusion">Conclusion</string>
+    <string name="menu_outgoing_notes_remark">Remarks</string>
+    <string name="menu_outgoing_notes_memo">Memo</string>
+    <string name="attachment_list_activity_title">Attachment</string>
+    <string name="maps_activity_title">Location</string>
+    <string name="activity_attachment_tv_image_limit">Maximum 5 attachments only.</string>
+    <string name="attachment_image_limit_reached">You reached the maximum attachment limit</string>
+    <string name="activity_create_merchant_button_submit_btn">CREATE MERCHANDISING VISIT</string>
+    <string name="activity_create_merchant_et_title_hint">Title</string>
+    <string name="activity_create_merchant_et_location_hint">Location</string>
+    <!--
+        <string name="create_merchant_activity_title">Create Merchant Visit</string>
+        <string name="create_sales_activity_title">Create Sales Visit</string>
+        <string name="activity_create_sales_button_submit_btn">CREATE DEALER SALES VISIT</string>
+        <string name="create_simple_task_activity_title">Create New Task</string>-->
+
+    <!--Visit Action Activity-->
+    <string name="activity_visit_remark_btn_save_text">SAVE</string>
+    <string name="visit_action_escalate_user_hint">Assignee</string>
+    <string name="visit_action_escalate_reason_hint">Reason</string>
+    <string name="visit_action_escalate">Escalate</string>
+    <string name="visit_action_re_assign">Re-Assign</string>
+    <string name="visit_action_successful">Successful</string>
+    <string name="visit_action_unsuccessful">Unsuccessful</string>
+    <string name="visit_reason_empty_error">Please enter the reason</string>
+    <string name="visit_action_sales_value">Closed Sales Value</string>
+
+    <!--MainActivity create new texts-->
+    <string name="main_activity_create_new_sales_task">Create Sales Visit</string>
+    <string name="main_activity_create_new_merchandise_task">Create Merchandise Visit</string>
+    <string name="main_activity_create_new_general_task">Create General Task</string>
+    <string name="main_activity_create_new_phone_call_task">Create Phone Call</string>
+    <string name="main_activity_create_new_appointment_task">Create Appointment</string>
+
+    <string name="activity_main_fab_new_sales_visit_title">New Sales Visit</string>
+    <string name="activity_main_fab_new_merchandise_visit_title">New Merchandising Visit</string>
+    <string name="activity_main_fab_new_general_task_title">New General Task</string>
+    <string name="activity_main_fab_new_phone_call_title">New Phone Call</string>
+    <string name="activity_main_fab_new_appointment_title">New Appointment</string>
+
+
+    <string name="activity_create_new_merchant_et_message_hint">Message</string>
+    <string name="activity_create_new_et_due_date_hint">Due Date</string>
+    <string name="activity_create_new_et_start_date_hint">Start Date</string>
+    <string name="activity_create_new_merchant_et_location_hint">Location</string>
+    <string name="activity_create_new_merchant_et_assign_to_hint">Assign To</string>
+    <string name="activity_create_new_et_title_hint">Title</string>
+    <string name="activity_create_new_sales_et_dealer_hint">Dealer</string>
+    <string name="location_activity_title">Location</string>
+    <string name="activity_create_new_et_customer_name_hint">Name</string>
+    <string name="activity_create_new_et_dealer_name_hint">Dealer Name</string>
+    <string name="activity_create_new_et_projected_value_hint">Projected Value</string>
+    <string name="activity_create_new_et_address_hint">Address</string>
+    <string name="activity_create_new_et_contact_no_hint">Contact Number</string>
+    <string name="activity_create_new_et_date_hint">Date</string>
+    <string name="activity_create_new_et_time_hint">Time</string>
+    <string name="activity_create_new_merchant_et_visit_details_hint">Task Details</string>
+    <string name="activity_create_new_sales_et_details_hint">Visit Details</string>
+    <string name="activity_create_new_et_showroom_hint">Showroom</string>
+    <string name="activity_create_new_et_task_name_hint">Task Name</string>
+    <string name="activity_create_new_et_task_name_or_appointment_hint">Task/ Appointment Name</string>
+    <string name="activity_create_new_et_appointment_hint">Appointment Name</string>
+    <string name="activity_create_new_appointment_et_hint">Task/ Appointment Details</string>
+    <string name="activity_create_new_appointment_et_details_hint">Appointment Details</string>
+    <string name="service_order_details_remark_hint">Enter remarks</string>
+    <string name="service_order_details_memo_hint">Enter memo</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="location_error">Location coordinates not fetched</string>
+    <string name="title_activity_driver_maps">Map</string>
+    <string name="title_activity_user_maps">Map</string>
+
+</resources>

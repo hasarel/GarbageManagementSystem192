@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_corners_white_background"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    android:paddingStart="8dp"
+    android:paddingTop="20dp"
+    android:paddingEnd="8dp"
+    android:paddingBottom="20dp">
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/ic_info" />
+
+    <TextView
+        android:id="@+id/custom_alert_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="No Internet Connect"
+        android:textAlignment="center"
+        android:textColor="@color/colorDefaultText"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/custom_alert_tv_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:lineSpacingExtra="1dp"
+        android:text="Please turn mobile data on or connect to wifi to proceed."
+        android:textAlignment="center"
+        android:textColor="@color/colorDefaultText" />
+
+    <LinearLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/custom_alert_btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/rounded_corners_gray_button"
+            android:text="CANCEL"
+            android:textColor="@color/colorBlack" />
+
+        <Button
+            android:id="@+id/custom_alert_btn_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/rounded_corners_yellow_button"
+            android:text="SETTINGS"
+            android:textColor="@color/colorBlack" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1078739754678",
+    "firebase_url": "https://garbagemanagementsystem-a91e1.firebaseio.com",
+    "project_id": "garbagemanagementsystem-a91e1",
+    "storage_bucket": "garbagemanagementsystem-a91e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078739754678:android:973606e51f8afe8ea01017",
+        "android_client_info": {
+          "package_name": "com.nibm.rwp.garbagemanagementsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078739754678-d70mn13aj7att57rq49v0dudhql2g5nq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nibm.rwp.garbagemanagementsystem",
+            "certificate_hash": "77d6fe17dea2d99fe4f2042f7bebe361bf22b0c6"
+          }
+        },
+        {
+          "client_id": "1078739754678-66csc3bc6apellrm7rne0e2l5l5v7ros.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-6Tq2brW_-683Vfw3Cc1c-uos_WrJGpQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078739754678-66csc3bc6apellrm7rne0e2l5l5v7ros.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

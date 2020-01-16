@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#F4FFF5"
+    android:layout_height="match_parent"
+    tools:context=".activity.RegisterActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <RelativeLayout
+        android:id="@+id/activity_register_rl_relativeLayout"
+        android:layout_below="@id/toolbar"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_corners_white_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <RelativeLayout
+            android:id="@+id/activity_register_rl_relativeLayout0"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/activity_register_tv_registerText"
+                android:textColor="@color/colorListTitleText"
+                android:textStyle="bold"
+                android:text="Let's Start With
+                Register!"
+                android:textSize="35dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/activity_register_rl_relativeLayout1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--        </RelativeLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:orientation="vertical"-->
+<!--            android:background="@drawable/rounded_corners_white_background"-->
+<!--            android:layout_below="@id/activity_register_rl_relativeLayout0"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/activity_register_rl_relativeLayout2"-->
+<!--            android:layout_below="@id/activity_register_rl_relativeLayout1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/activity_login_til_fname"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/activity_Register_et_fname"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:drawableRight="@drawable/fname"-->
+<!--                    android:hint="@string/activity_register_et_fname"-->
+<!--                    android:inputType="text"-->
+<!--                    android:textColorHint="@color/colorListNormal1Text"-->
+<!--                    android:textColor="@color/colorListNormal1Text"-->
+<!--                    android:maxLines="1" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        </RelativeLayout>-->
+
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/activity_register_rl_relativeLayout3"-->
+<!--            android:layout_below="@id/activity_register_rl_relativeLayout2"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/activity_register_til_lname"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/activity_Register_et_lname"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textColor="@color/colorListNormal1Text"-->
+<!--                    android:drawableRight="@drawable/fname"-->
+<!--                    android:hint="@string/activity_register_et_lname"-->
+<!--                    android:inputType="text"-->
+<!--                    android:maxLines="1" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        </RelativeLayout>-->
+
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/activity_register_rl_relativeLayout4"-->
+<!--            android:layout_below="@id/activity_register_rl_relativeLayout3"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/activity_register_til_address1"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/activity_Register_et_address1"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:textColor="@color/colorListNormal1Text"-->
+<!--                    android:drawableRight="@drawable/address1"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:hint="@string/activity_register_et_Address1"-->
+<!--                    android:inputType="text"-->
+<!--                    android:maxLines="1" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        </RelativeLayout>-->
+
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/activity_register_rl_relativeLayout5"-->
+<!--            android:layout_below="@id/activity_register_rl_relativeLayout4"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/activity_register_til_address2"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/activity_Register_et_address2"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:drawableRight="@drawable/address1"-->
+<!--                    android:textColor="@color/colorListNormal1Text"-->
+<!--                    android:hint="@string/activity_register_et_Address2"-->
+<!--                    android:inputType="text"-->
+<!--                    android:maxLines="1" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        </RelativeLayout>-->
+
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/activity_register_rl_relativeLayout6"-->
+<!--            android:layout_below="@id/activity_register_rl_relativeLayout5"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/activity_register_til_street"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/activity_Register_et_addressStreet"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:drawableRight="@drawable/address1"-->
+<!--                    android:hint="@string/activity_register_et_Street"-->
+<!--                    android:inputType="text"-->
+<!--                    android:textColor="@color/colorListNormal1Text"-->
+<!--                    android:maxLines="1" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        </RelativeLayout>-->
+
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/activity_register_rl_relativeLayout7"-->
+<!--            android:layout_below="@id/activity_register_rl_relativeLayout6"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/activity_register_til_nic"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/activity_Register_et_nic"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:drawableRight="@drawable/nic"-->
+<!--                    android:hint="@string/activity_register_et_nic"-->
+<!--                    android:textColor="@color/colorListNormal1Text"-->
+<!--                    android:inputType="text"-->
+<!--                    android:maxLines="1" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        </RelativeLayout>-->
+
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/activity_register_rl_relativeLayout8"-->
+<!--            android:layout_below="@id/activity_register_rl_relativeLayout7"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/activity_register_til_contactNo"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/activity_Register_et_contactNo"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:hint="@string/activity_register_et_contactNo"-->
+<!--                    android:drawableRight="@drawable/phone"-->
+<!--                    android:textColor="@color/colorListNormal1Text"-->
+<!--                    android:inputType="text"-->
+<!--                    android:maxLines="1" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        </RelativeLayout>-->
+
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/activity_register_rl_relativeLayout9"-->
+<!--            android:layout_below="@id/activity_register_rl_relativeLayout8"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/activity_register_til_location"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/activity_Register_et_location"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:hint="@string/activity_register_et_location"-->
+<!--                    android:drawableRight="@drawable/location"-->
+<!--                    android:textColor="@color/colorListNormal1Text"-->
+<!--                    android:inputType="text"-->
+<!--                    android:maxLines="1" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        </RelativeLayout>-->
+
+        <RelativeLayout
+            android:id="@+id/activity_register_rl_relativeLayout10"
+            android:layout_below="@id/activity_register_rl_relativeLayout0"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/activity_register_til_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/activity_Register_et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/activity_register_et_email"
+                    android:drawableRight="@drawable/email"
+                    android:textColor="@color/colorListNormal1Text"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/activity_register_rl_relativeLayout11"
+            android:layout_below="@id/activity_register_rl_relativeLayout10"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/activity_register_til_password"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/activity_Register_et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/activity_login_et_password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/colorListNormal1Text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/activity_register_rl_relativeLayout12"
+            android:layout_below="@id/activity_register_rl_relativeLayout11"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/activity_register_til_comPassword"-->
+<!--                app:passwordToggleEnabled="true"-->
+<!--                app:passwordToggleTint="@color/black"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/activity_Register_et_comPassword"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textColor="@color/colorListNormal1Text"-->
+<!--                    android:hint="@string/activity_register_et_comPassword"-->
+<!--                    android:inputType="textPassword"-->
+<!--                    android:maxLines="1" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/activity_register_rl_relativeLayout13"
+            android:layout_below="@id/activity_register_rl_relativeLayout12"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+           <Button
+               android:id="@+id/activity_register_btn_submit"
+               android:text="@string/activity_register_et_submit"
+               android:layout_marginBottom="40dp"
+               android:background="@drawable/rounded_corners_button"
+               android:textColor="@color/colorWhiteButton"
+               android:textAllCaps="false"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
