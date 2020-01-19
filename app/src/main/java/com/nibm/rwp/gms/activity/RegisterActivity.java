@@ -1,16 +1,16 @@
 package com.nibm.rwp.gms.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,10 +20,10 @@ import com.nibm.rwp.gms.R;
 import com.nibm.rwp.gms.common.BaseActivity;
 import com.nibm.rwp.gms.utill.AppUtill;
 
-public class RegisterActivity extends BaseActivity implements View.OnClickListener{
+public class RegisterActivity extends BaseActivity implements View.OnClickListener {
 
     //Ui components
-    private EditText mEtFname,mEtLname,mEtAddress1,mEtAddress2,mEtStreet,mEtNic,mEtLocation,mEtContact,mEtEmail,mEtPassword,mEtCpassword;
+    private EditText mEtFname, mEtLname, mEtAddress1, mEtAddress2, mEtAddress3, mEtContact, mEtEmail, mEtPassword;
     Button mBtnRegister;
 
     public FirebaseAuth mAuth;
@@ -45,30 +45,46 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         return true;
     }
 
-    public void initView(){
+    public void initView() {
         mBtnRegister = findViewById(R.id.activity_register_btn_submit);
-//        mEtFname = findViewById(R.id.activity_Register_et_fname);
-//        mEtLname = findViewById(R.id.activity_Register_et_lname);
-//        mEtAddress1 = findViewById(R.id.activity_Register_et_address1);
-//        mEtAddress2 = findViewById(R.id.activity_Register_et_address2);
-//        mEtStreet = findViewById(R.id.activity_Register_et_addressStreet);
-//        mEtNic = findViewById(R.id.activity_Register_et_nic);
-//        mEtLocation = findViewById(R.id.activity_Register_et_location);
-//        mEtContact = findViewById(R.id.activity_Register_et_contactNo);
+        mEtFname = findViewById(R.id.activity_Register_et_fname);
+        mEtAddress1 = findViewById(R.id.activity_Register_et_address1);
+        mEtAddress2 = findViewById(R.id.activity_Register_et_address2);
+        mEtAddress3 = findViewById(R.id.activity_Register_et_address3);
+        mEtContact = findViewById(R.id.activity_Register_et_contactNo);
         mEtEmail = findViewById(R.id.activity_Register_et_email);
         mEtPassword = findViewById(R.id.activity_Register_et_password);
-        //mEtCpassword = findViewById(R.id.activity_Register_et_comPassword);
         mBtnRegister.setOnClickListener(this);
     }
 
-    public void userRegister(){
+    public void passDataToAddRequest() {
+        String fname = mEtFname.getText().toString();
+        String address1 = mEtAddress1.getText().toString();
+        String address2 = mEtAddress2.getText().toString();
+        String address3 = mEtAddress3.getText().toString();
+        String contact = mEtContact.getText().toString();
+        String email = mEtEmail.getText().toString();
 
-        String email,password;
+        SharedPreferences prf = getSharedPreferences("details", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prf.edit();
+        editor.putString("fname", fname);
+        editor.putString("address1", address1);
+        editor.putString("address2", address2);
+        editor.putString("address3", address3);
+        editor.putString("contact", contact);
+        editor.putString("email", email);
+        editor.commit();
+    }
+
+
+    public void userRegister() {
+
+        String email, password;
 
         email = mEtEmail.getText().toString();
         password = mEtPassword.getText().toString();
 
-        if (TextUtils.isEmpty(email)){
+        if (TextUtils.isEmpty(email)) {
             final AlertDialog dialog = new AlertDialog.Builder(RegisterActivity.this).create();
             AppUtill.showCustomStandardAlert(dialog,
                     RegisterActivity.this,
@@ -80,7 +96,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             return;
         }
 
-        if (TextUtils.isEmpty(password)){
+        if (TextUtils.isEmpty(password)) {
             final AlertDialog dialog = new AlertDialog.Builder(RegisterActivity.this).create();
             AppUtill.showCustomStandardAlert(dialog,
                     RegisterActivity.this,
@@ -92,19 +108,18 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             return;
         }
 
-        mAuth.createUserWithEmailAndPassword(email,password)
+        mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        if (task.isSuccessful()){
-                            Toast.makeText(RegisterActivity.this,"Successfully Register !!! ",Toast.LENGTH_SHORT).show();
+                        if (task.isSuccessful()) {
+                            Toast.makeText(RegisterActivity.this, "Successfully Register !!! ", Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                             startActivity(intent);
-                        }
-                        else
-                            Toast.makeText(RegisterActivity.this,"Failed !!! ", Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(RegisterActivity.this, "Failed !!! ", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -112,9 +127,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.activity_register_btn_submit:
                 userRegister();
+                passDataToAddRequest();
                 break;
         }
     }

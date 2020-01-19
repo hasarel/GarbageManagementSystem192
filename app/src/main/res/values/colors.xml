@@ -20,6 +20,7 @@
     <color name="colorSelectedMenuItemText">#ff7300</color>
     <color name="colorNotSelectedMenuItemText">#525252</color>
     <color name="colorSelectedMenuItemBackGround">#f6f6f6</color>
+    <color name="rounded_edittext_text">#BAFBBF</color>
     <color name="colorTextViewAllText">#676666</color>
 
     <!--Visit type colors-->

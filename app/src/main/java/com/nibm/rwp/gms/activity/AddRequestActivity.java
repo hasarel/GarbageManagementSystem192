@@ -2,8 +2,10 @@ package com.nibm.rwp.gms.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -36,21 +38,15 @@ import com.nibm.rwp.gms.common.BaseActivity;
 import com.nibm.rwp.gms.dto.GarbageCategoryList;
 import com.nibm.rwp.gms.dto.GarbageRequest;
 import com.nibm.rwp.gms.dto.UcArea;
+import com.nibm.rwp.gms.dto.UcVehicleList;
 import com.nibm.rwp.gms.interfaces.EndPoints;
 import com.nibm.rwp.gms.listeners.OnCatClickListener;
+import com.nibm.rwp.gms.utill.AppUtill;
 import com.nibm.rwp.gms.utill.RetrofitClient;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.MultipartBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -77,8 +73,9 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
     private RecyclerView mUcList;
     private Spinner mSpUcArea;
 
-
-    private EndPoints endPoints;
+    private List<UcVehicleList> ucVehicleLists = null;
+    private RecyclerView mUcVehicleRecycleView;
+    private Spinner mSpUcVehicle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +91,48 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
 
         getGarbageCategoryList();
         getUcAreaList();
+        getUcVehicleList();
+        sharedPreferences();
+    }
+
+    private void activity() {
+        Intent intent = new Intent(AddRequestActivity.this, AddPaymentActivity.class);
+        startActivity(intent);
+    }
+
+    private void confirmDialog() {
+        final AlertDialog dialog = new AlertDialog.Builder(AddRequestActivity.this).create();
+        AppUtill.showCustomConfirmAlert(dialog,
+                AddRequestActivity.this,
+                getResources().getString(R.string.confim_request),
+                getResources().getString(R.string.cancel_request),
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        activity();
+                    }
+                },
+                null,
+                getResources().getString(R.string.yes_text),
+                getResources().getString(R.string.no_text),
+                false);
+    }
+
+    private void sharedPreferences() {
+        SharedPreferences prf = getSharedPreferences("details", MODE_PRIVATE);
+        String fname = prf.getString("fname", "no value");
+        String address1 = prf.getString("address1", "no value");
+        String address2 = prf.getString("address2", "no value");
+        String address3 = prf.getString("address3", "no value");
+        String contact = prf.getString("contact", "no values");
+        String email = prf.getString("email", "no values");
+        mEtName.setText(fname);
+        mEtAddress1.setText(address1);
+        mEtAddress2.setText(address2);
+        mEtAddress3.setText(address3);
+        mEtContactNo.setText(contact);
+        mEtEmail.setText(email);
     }
 
     @SuppressLint("MissingPermission")
@@ -190,7 +229,6 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
         if (checkPermissions()) {
             getLastLocation();
         }
-
     }
 
 
@@ -219,24 +257,26 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
         catSpinner = findViewById(R.id.activity_add_request_sp_category);
         mSpUcArea = findViewById(R.id.activity_add_request_sp_area);
         mUcList = findViewById(R.id.activity_add_request_area_cat_list);
+        mUcVehicleRecycleView = findViewById(R.id.activity_add_request_garbage_vehicle_list);
+        mSpUcVehicle = findViewById(R.id.activity_add_request_sp_garbage_vehicle_category);
 
         getGarbageCategoryList();
         getUcAreaList();
+        getUcVehicleList();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.activity_add_request_btn_progress:
-               setCustomerRequest();
-               Intent intent = new Intent(AddRequestActivity.this,AddPaymentActivity.class);
-               startActivity(intent);
+                setCustomerRequest();
+                confirmDialog();
                 break;
         }
     }
 
     private void getUcAreaList() {
-        Log.i("autolog", "getUserList");
+        Log.i(TAG, "getUserList");
         try {
 
             EndPoints service = RetrofitClient.getRetrofitInstance().create(EndPoints.class);
@@ -245,10 +285,10 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
                 @Override
                 public void onResponse(Call<List<UcArea>> call, Response<List<UcArea>> response) {
                     //Log.i("onResponse", response.message());
-                    Log.i("autolog", "onResponse");
+                    Log.i(TAG, "onResponse");
 
                     ucAreaList = response.body();
-                    Log.i("autolog", "---" + ucAreaList.get(0).getName());
+                    Log.i(TAG, "---" + ucAreaList.get(0).getName());
 
                     if (ucAreaList != null)
                         setUcAreaRecycleView(ucAreaList);
@@ -256,11 +296,11 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
 
                 @Override
                 public void onFailure(Call<List<UcArea>> call, Throwable t) {
-                    Log.i("autolog", t.getMessage());
+                    Log.i(TAG, t.getMessage());
                 }
             });
         } catch (Exception e) {
-            Log.i("autolog", "Exception");
+            Log.i(TAG, "Exception");
         }
     }
 
@@ -286,7 +326,7 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
 
     private void getGarbageCategoryList() {
 
-        Log.i("autolog", "getUserList");
+        Log.i(TAG, "getUserList");
         try {
 
             EndPoints service = RetrofitClient.getRetrofitInstance().create(EndPoints.class);
@@ -295,10 +335,10 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
                 @Override
                 public void onResponse(Call<List<GarbageCategoryList>> call, Response<List<GarbageCategoryList>> response) {
                     //Log.i("onResponse", response.message());
-                    Log.i("autolog", "onResponse");
+                    Log.i(TAG, "onResponse");
 
                     userList = response.body();
-                    Log.i("autolog", "---" + userList.get(0).getName());
+                    Log.i(TAG, "---" + userList.get(0).getName());
 
                     if (userList != null)
                         setupCatRecyclerView(userList);
@@ -306,11 +346,11 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
 
                 @Override
                 public void onFailure(Call<List<GarbageCategoryList>> call, Throwable t) {
-                    Log.i("autolog", t.getMessage());
+                    Log.i(TAG, t.getMessage());
                 }
             });
         } catch (Exception e) {
-            Log.i("autolog", "Exception");
+            Log.i(TAG, "Exception");
         }
     }
 
@@ -333,7 +373,56 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
         }
     }
 
-    private void setCustomerRequest()  {
+    private void getUcVehicleList() {
+
+        Log.i(TAG, "getUserList");
+        try {
+
+            EndPoints service = RetrofitClient.getRetrofitInstance().create(EndPoints.class);
+            Call<List<UcVehicleList>> call = service.getUcVehicle();
+            call.enqueue(new Callback<List<UcVehicleList>>() {
+                @Override
+                public void onResponse(Call<List<UcVehicleList>> call, Response<List<UcVehicleList>> response) {
+                    //Log.i("onResponse", response.message());
+                    Log.i(TAG, "onResponse");
+
+                    ucVehicleLists = response.body();
+                    Log.i(TAG, "---" + ucVehicleLists.get(0).getType_code());
+
+                    if (ucVehicleLists != null)
+                        setUcVehicleListRecyclerView(ucVehicleLists);
+                }
+
+                @Override
+                public void onFailure(Call<List<UcVehicleList>> call, Throwable t) {
+                    Log.i(TAG, t.getMessage());
+                }
+            });
+        } catch (Exception e) {
+            Log.i(TAG, "Exception");
+        }
+    }
+
+    private void setUcVehicleListRecyclerView(List<UcVehicleList> vehicleLists) {
+        if (vehicleLists.size() > 0) {
+            List<String> list = new ArrayList<>();
+
+            for (int i = 0; i < vehicleLists.size(); i++) {
+                list.add(vehicleLists.get(i).getType_code());
+            }
+
+            ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_spinner_item, list);
+            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            mSpUcVehicle.setAdapter(dataAdapter);
+
+        } else {
+            Toast.makeText(AddRequestActivity.this, "No any suggestions found", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
+    private void setCustomerRequest() {
 
         EndPoints service = RetrofitClient.getRetrofitInstance().create(EndPoints.class);
         Call<GarbageRequest> call = service.setCustomerRequest(
@@ -362,23 +451,10 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
 //                Log.i("VALUES",catSpinner.getSelectedItem().toString());
 
 
-//        Call<GarbageRequest> call = service.setCustomerRequest(
-//                "1",
-//                "1",
-//                "1",
-//                "1",
-//                "1",
-//                "1",
-//                "1",
-//                "1",
-//                "1",
-//                "1",
-//                "1");
-
         call.enqueue(new Callback<GarbageRequest>() {
             @Override
             public void onResponse(Call<GarbageRequest> call, Response<GarbageRequest> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     if (response.code() == 200) {
                         GarbageRequest myResponse = response.body();
                         if (myResponse != null) {
@@ -391,8 +467,8 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
 
             @Override
             public void onFailure(Call<GarbageRequest> call, Throwable t) {
-                Log.i("autolog", t.toString() );
-                Toast.makeText(AddRequestActivity.this,"Something went wrong...Please try later!",Toast.LENGTH_LONG).show();
+                Log.i(TAG, t.toString());
+                Toast.makeText(AddRequestActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -47,13 +47,14 @@
             android:layout_below="@id/activity_add_request_rl_relativeLayout0"
             android:layout_width="match_parent"
             android:padding="10dp"
+            android:gravity="center"
             android:layout_marginTop="50dp"
             android:layout_height="wrap_content">
 
             <TextView
                 android:text="@string/activity_add_request_tv_category"
                 android:textSize="18dp"
-                android:textColor="@color/colorTextViewAllText"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -105,10 +106,50 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/activity_addRequest_rl_relativeLayout_location"
+            android:id="@+id/activity_addPayment_rl_relativeLayout22"
             android:layout_below="@id/activity_addRequest_rl_relativeLayout_description"
             android:layout_width="match_parent"
             android:padding="10dp"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/activity_add_request_tv_vehicle_category"
+                android:textSize="18dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/activity_add_request_rl_relativeLayout11"
+            android:layout_below="@id/activity_addPayment_rl_relativeLayout22"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/activity_add_request_garbage_vehicle_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"/>
+
+            <Spinner
+                android:id="@+id/activity_add_request_sp_garbage_vehicle_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/activity_addRequest_rl_relativeLayout_location"
+            android:layout_below="@id/activity_add_request_rl_relativeLayout11"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -179,13 +220,14 @@
             android:layout_below="@id/activity_addRequest_rl_relativeLayout_name"
             android:layout_width="match_parent"
             android:padding="10dp"
+            android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_height="wrap_content">
 
             <TextView
                 android:text="@string/activity_add_request_tv_area"
                 android:textSize="18dp"
-                android:textColor="@color/colorTextViewAllText"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 

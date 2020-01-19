@@ -30,7 +30,7 @@
     <string name="activity_register_et_lname">Last name</string>
     <string name="activity_register_et_Address1">Address Line 1</string>
     <string name="activity_register_et_Address2">Address Line 2</string>
-    <string name="activity_register_et_Street">Street</string>
+    <string name="activity_register_et_Address3">Address Line 3</string>
     <string name="activity_register_et_nic">NIC</string>
     <string name="activity_register_et_contactNo">Contact No</string>
     <string name="activity_register_et_location">Location</string>
@@ -48,9 +48,10 @@
     <string name="layout_item_button_name">Location</string>
 
     <!--Activity Add Request-->
-    <string name="activity_add_request_tv_text">Add Request</string>
-    <string name="activity_add_request_tv_category">Garbage Category Type</string>
-    <string name="activity_add_request_tv_area">Select Your Area</string>
+    <string name="activity_add_request_tv_text">Create Request</string>
+    <string name="activity_add_request_tv_category">- - - - - - Garbage Category Type- - - - - - </string>
+    <string name="activity_add_request_tv_vehicle_category">- - - - - - Garbage Vehicle Type - - - - - -</string>
+    <string name="activity_add_request_tv_area">- - - - - - Select Your Area- - - - - - </string>
     <string name="activity_add_request_tv_description">Description</string>
     <string name="activity_add_request_et_hint_description">Please Type Here Your Description...</string>
     <string name="activity_add_request_et_location_hint">Your Location Longitude</string>
@@ -103,6 +104,9 @@
     <string name="success_text">Success</string>
     <string name="sign_out_text">Sign Out</string>
     <string name="no_internet_connection_text">No Internet connection</string>
+    <string name="confim_request">Are You Sure
+        you want Continue ? </string>
+    <string name="cancel_request"></string>
     <string name="no_data_fetched">No any data fetched!</string>
     <string name="turn_on_internet_connection_text">You have no active internet connection on this device. Please turn on mobile data or connect to wifi to proceed</string>
     <string name="sign_out_message">Are you sure you want to sign out.</string>
