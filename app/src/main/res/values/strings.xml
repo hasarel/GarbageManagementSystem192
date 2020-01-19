@@ -55,6 +55,7 @@
     <string name="activity_add_request_et_hint_description">Please Type Here Your Description...</string>
     <string name="activity_add_request_et_location_hint">Your Location Longitude</string>
     <string name="activity_add_request_et_location_hint2">Your Location Latitude</string>
+    <string name="activity_add_request_et_location_hint3">Email</string>
     <string name="activity_add_request_btn_progress">Progress</string>
     <!--End of Add Request-->
 

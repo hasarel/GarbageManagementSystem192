@@ -1,23 +1,90 @@
 package com.nibm.rwp.gms.dto;
 
 public class GarbageRequest {
-    private String category;
-    private String description;
-    private String longtiute;
-    private String latitiute;
-    private String name;
-    private String area;
-    private String address1;
-    private String address2;
-    private String address3;
-    private String contact;
 
-    public String getCategory() {
-        return category;
+    private String customer_name;
+    private String email;
+    private String area_id;
+    private String longitude;
+    private String latitude;
+    private String address_1;
+    private String address_2;
+    private String address_3;
+    private String tele_no;
+    private String description;
+    private String category_id;
+
+
+    public String getCustomer_name() {
+        return customer_name;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCustomer_name(String customer_name) {
+        this.customer_name = customer_name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getArea_id() {
+        return area_id;
+    }
+
+    public void setArea_id(String area_id) {
+        this.area_id = area_id;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getAddress_1() {
+        return address_1;
+    }
+
+    public void setAddress_1(String address_1) {
+        this.address_1 = address_1;
+    }
+
+    public String getAddress_2() {
+        return address_2;
+    }
+
+    public void setAddress_2(String address_2) {
+        this.address_2 = address_2;
+    }
+
+    public String getAddress_3() {
+        return address_3;
+    }
+
+    public void setAddress_3(String address_3) {
+        this.address_3 = address_3;
+    }
+
+    public String getTele_no() {
+        return tele_no;
+    }
+
+    public void setTele_no(String tele_no) {
+        this.tele_no = tele_no;
     }
 
     public String getDescription() {
@@ -28,81 +95,26 @@ public class GarbageRequest {
         this.description = description;
     }
 
-    public String getLongtiute() {
-        return longtiute;
+    public String getCategory_id() {
+        return category_id;
     }
 
-    public void setLongtiute(String longtiute) {
-        this.longtiute = longtiute;
+    public void setCategory_id(String category_id) {
+        this.category_id = category_id;
     }
 
-    public String getLatitiute() {
-        return latitiute;
-    }
-
-    public void setLatitiute(String latitiute) {
-        this.latitiute = latitiute;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getArea() {
-        return area;
-    }
-
-    public void setArea(String area) {
-        this.area = area;
-    }
-
-    public String getAddress1() {
-        return address1;
-    }
-
-    public void setAddress1(String address1) {
-        this.address1 = address1;
-    }
-
-    public String getAddress2() {
-        return address2;
-    }
-
-    public void setAddress2(String address2) {
-        this.address2 = address2;
-    }
-
-    public String getAddress3() {
-        return address3;
-    }
-
-    public void setAddress3(String address3) {
-        this.address3 = address3;
-    }
-
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
-    public GarbageRequest(String category, String description, String longtiute, String latitiute, String name, String area, String address1, String address2, String address3, String contact) {
-        this.category = category;
+    public GarbageRequest( String customer_name, String email, String area_id, String longitude, String latitude,
+                          String address_1, String address_2, String address_3, String tele_no, String description, String category_id) {
+        this.customer_name = customer_name;
+        this.email = email;
+        this.area_id = area_id;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.address_1 = address_1;
+        this.address_2 = address_2;
+        this.address_3 = address_3;
+        this.tele_no = tele_no;
         this.description = description;
-        this.longtiute = longtiute;
-        this.latitiute = latitiute;
-        this.name = name;
-        this.area = area;
-        this.address1 = address1;
-        this.address2 = address2;
-        this.address3 = address3;
-        this.contact = contact;
+        this.category_id = category_id;
     }
-
 }

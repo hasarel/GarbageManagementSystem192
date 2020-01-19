@@ -309,8 +309,32 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/activity_add_request_rl_relativeLayout4"
+            android:id="@+id/activity_addRequest_rl_relativeLayout_email"
             android:layout_below="@id/activity_addRequest_rl_relativeLayout_contact"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/activity_add_request_eml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/activity_add_request_et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/activity_add_request_et_location_hint3"
+                    android:textColor="@color/colorListNormal1Text"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/activity_add_request_rl_relativeLayout4"
+            android:layout_below="@id/activity_addRequest_rl_relativeLayout_email"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_marginBottom="30dp"
