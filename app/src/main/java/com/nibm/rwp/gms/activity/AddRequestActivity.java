@@ -436,19 +436,21 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
                 mEtAddress3.getText().toString(),
                 mEtContactNo.getText().toString(),
                 mEtDescription.getText().toString(),
-                catSpinner.getSelectedItem().toString());
+                catSpinner.getSelectedItem().toString(),
+                mSpUcVehicle.getSelectedItem().toString());
 
-//                Log.i("VALUES",mEtName.getText().toString());
-//                Log.i("VALUES",mEtEmail.getText().toString());
-//                Log.i("VALUES",mSpUcArea.getSelectedItem().toString());
-//                Log.i("VALUES",mEtLocationLongTiute.getText().toString());
-//                Log.i("VALUES",mEtLocationLatitute.getText().toString());
-//                Log.i("VALUES",mEtAddress1.getText().toString());
-//                Log.i("VALUES",mEtAddress2.getText().toString());
-//                Log.i("VALUES",mEtAddress3.getText().toString());
-//                Log.i("VALUES",mEtContactNo.getText().toString());
-//                Log.i("VALUES",mEtDescription.getText().toString());
-//                Log.i("VALUES",catSpinner.getSelectedItem().toString());
+                Log.i("VALUES",mEtName.getText().toString());
+                Log.i("VALUES",mEtEmail.getText().toString());
+                Log.i("VALUES",mSpUcArea.getSelectedItem().toString());
+                Log.i("VALUES",mEtLocationLongTiute.getText().toString());
+                Log.i("VALUES",mEtLocationLatitute.getText().toString());
+                Log.i("VALUES",mEtAddress1.getText().toString());
+                Log.i("VALUES",mEtAddress2.getText().toString());
+                Log.i("VALUES",mEtAddress3.getText().toString());
+                Log.i("VALUES",mEtContactNo.getText().toString());
+                Log.i("VALUES",mEtDescription.getText().toString());
+                Log.i("VALUES",catSpinner.getSelectedItem().toString());
+                Log.i("VALUES",mSpUcVehicle.getSelectedItem().toString());
 
 
         call.enqueue(new Callback<GarbageRequest>() {

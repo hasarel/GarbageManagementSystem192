@@ -13,7 +13,15 @@ public class GarbageRequest {
     private String tele_no;
     private String description;
     private String category_id;
+    private String vehicle_type_id;
 
+    public String getVehicle_type_id() {
+        return vehicle_type_id;
+    }
+
+    public void setVehicle_type_id(String vehicle_type_id) {
+        this.vehicle_type_id = vehicle_type_id;
+    }
 
     public String getCustomer_name() {
         return customer_name;
@@ -104,7 +112,7 @@ public class GarbageRequest {
     }
 
     public GarbageRequest( String customer_name, String email, String area_id, String longitude, String latitude,
-                          String address_1, String address_2, String address_3, String tele_no, String description, String category_id) {
+                          String address_1, String address_2, String address_3, String tele_no, String description, String category_id, String vehicle_type_id) {
         this.customer_name = customer_name;
         this.email = email;
         this.area_id = area_id;
@@ -116,5 +124,6 @@ public class GarbageRequest {
         this.tele_no = tele_no;
         this.description = description;
         this.category_id = category_id;
+        this.vehicle_type_id = vehicle_type_id;
     }
 }

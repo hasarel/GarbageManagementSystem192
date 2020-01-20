@@ -33,7 +33,7 @@ public interface EndPoints {
             @Field("latitude") String latitude, @Field("address_1") String address_1,
             @Field("address_2") String address_2, @Field("address_3") String address_3,
             @Field("tele_no") String tele_no, @Field("description") String description,
-            @Field("category_id") String category_id);
+            @Field("category_id") String category_id, @Field("vehicle_type_id") String vehicle_type_id);
 
     @POST("/customer/request")
     Call<GarbageRequest> setCustomerRequest(GarbageRequest garbageRequestModel);
