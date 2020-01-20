@@ -24,21 +24,27 @@ public interface EndPoints {
     @GET("areas/all")
     Call<List<UcArea>> getAllUcArea();
 
+    //garbage category list
     @GET("/category/all")
     Call<List<GarbageCategoryList>> getGarbageList();
 
+    //set location to driver
     @GET("/customer/all/request")
     Call<List<CustomerRequest>> getDriverMap();
 
+    // customer request history list
     @GET("/customer/all/request")
     Call<List<RequestHistory>> getRequestHistory();
 
+    // customer payment history list
     @GET("/customer/all/request")
     Call<List<PaymentHistory>> getPaymentHistory();
 
+    // garbage vehicle type list
     @GET("/vehicle/types")
     Call<List<UcVehicleList>> getUcVehicle();
 
+    // customer request
     @POST("/customer/request")
     Call<JsonElement> setCustomerRequest(@Body GarbageRequest req);
 

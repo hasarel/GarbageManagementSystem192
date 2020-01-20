@@ -449,7 +449,7 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
     private GarbageRequest getCustomerReq() {
         GarbageRequest customerReq = new GarbageRequest();
         customerReq.setUser_id(3);
-        customerReq.setCustomer_name(/*mEtName.getText().toString()*/"W.L. Nipun Ishagdfgda");
+        customerReq.setCustomer_name(/*mEtName.getText().toString()*/"madola");
         customerReq.setEmail(/*mEtEmail.getText().toString()*/"w.l.n.ishara@gmail.com");
         customerReq.setArea_id(/*mSpUcArea.getSelectedItem()*/4);
         customerReq.setLatitude(/*mEtLocationLongTiute.getText().toString()*/523);
@@ -460,7 +460,8 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
         customerReq.setTele_no(/*mEtAddress1.getText().toString()*/"0774523652");
         customerReq.setDescription(/*mEtAddress1.getText().toString()*/"Test");
         customerReq.setCategory_id(/*catSpinner.getSelectedItem().toString()*/1);
-        customerReq.setVehicle_type_id(/*mSpUcVehicle.getSelectedItem()*/2);
+       // customerReq.setArea_id(Integer.parseInt(mSpUcArea.getSelectedItem().toString()));
+        //customerReq.setVehicle_type_id(Integer.parseInt(mSpUcVehicle.getSelectedItem().toString()));
 
         return  customerReq;
     }
