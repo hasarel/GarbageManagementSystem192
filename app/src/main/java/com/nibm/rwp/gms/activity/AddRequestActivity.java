@@ -33,6 +33,7 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.gson.JsonElement;
 import com.nibm.rwp.gms.R;
 import com.nibm.rwp.gms.common.BaseActivity;
 import com.nibm.rwp.gms.dto.GarbageCategoryList;
@@ -43,6 +44,8 @@ import com.nibm.rwp.gms.interfaces.EndPoints;
 import com.nibm.rwp.gms.listeners.OnCatClickListener;
 import com.nibm.rwp.gms.utill.AppUtill;
 import com.nibm.rwp.gms.utill.RetrofitClient;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -269,8 +272,8 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.activity_add_request_btn_progress:
-                setCustomerRequest();
-                confirmDialog();
+                sendCustomerReq();
+                //confirmDialog();
                 break;
         }
     }
@@ -305,7 +308,6 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
     }
 
     private void setUcAreaRecycleView(List<UcArea> ucAreas) {
-
         if (ucAreas.size() > 0) {
             List<String> list = new ArrayList<>();
 
@@ -320,7 +322,6 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
 
         } else {
             Toast.makeText(AddRequestActivity.this, "No any suggestions found", Toast.LENGTH_SHORT).show();
-
         }
     }
 
@@ -377,7 +378,6 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
 
         Log.i(TAG, "getUserList");
         try {
-
             EndPoints service = RetrofitClient.getRetrofitInstance().create(EndPoints.class);
             Call<List<UcVehicleList>> call = service.getUcVehicle();
             call.enqueue(new Callback<List<UcVehicleList>>() {
@@ -422,10 +422,10 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
         }
     }
 
-    private void setCustomerRequest() {
+    /*private void setCustomerRequest() {
 
         EndPoints service = RetrofitClient.getRetrofitInstance().create(EndPoints.class);
-        Call<GarbageRequest> call = service.setCustomerRequest(
+    *//*    Call<GarbageRequest> call = service.setCustomerRequest(
                 mEtName.getText().toString(),
                 mEtEmail.getText().toString(),
                 mSpUcArea.getSelectedItem().toString(),
@@ -437,7 +437,9 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
                 mEtContactNo.getText().toString(),
                 mEtDescription.getText().toString(),
                 catSpinner.getSelectedItem().toString(),
-                mSpUcVehicle.getSelectedItem().toString());
+                mSpUcVehicle.getSelectedItem().toString());*//*
+
+        Call<GarbageRequest> call = service.setCustomerRequest(getCustomerReq());
 
                 Log.i("VALUES",mEtName.getText().toString());
                 Log.i("VALUES",mEtEmail.getText().toString());
@@ -458,12 +460,17 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
             public void onResponse(Call<GarbageRequest> call, Response<GarbageRequest> response) {
                 if (response.isSuccessful()) {
                     if (response.code() == 200) {
+                        Log.w("RESP","------------ success-----");
                         GarbageRequest myResponse = response.body();
                         if (myResponse != null) {
                             Toast.makeText(AddRequestActivity.this, "Successfully Executed", Toast.LENGTH_LONG).show();
                         }
 
+                    }else{
+                        Log.w("RESP","------------ service error-----");
                     }
+                }else{
+                    Log.w("RESP","------------ service error-----");
                 }
             }
 
@@ -473,6 +480,51 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
                 Toast.makeText(AddRequestActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_LONG).show();
             }
         });
+    }*/
+
+    private void sendCustomerReq(){
+        try {
+            EndPoints service = RetrofitClient.getRetrofitInstance().create(EndPoints.class);
+            Call<JsonElement> call = service.setCustomerRequest(getCustomerReq());
+            call.enqueue(new Callback<JsonElement>() {
+                @Override
+                public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                    //Log.i("onResponse", response.message());
+                    Log.i(TAG, "onResponse");
+
+
+
+                    if (response != null)
+                        Log.w("RESP", "------- "+response.body());
+                }
+
+                @Override
+                public void onFailure(Call<JsonElement> call, Throwable t) {
+                    Log.i(TAG, t.getMessage());
+                }
+            });
+        } catch (Exception e) {
+            Log.i(TAG, "Exception");
+        }
+    }
+
+    private GarbageRequest getCustomerReq() {
+        GarbageRequest customerReq = new GarbageRequest();
+        customerReq.setUser_id(3); //TODO set user id here
+        customerReq.setCustomer_name(/*mEtName.getText().toString()*/"W.L. Nipun Ishagdfgda");
+        customerReq.setEmail(/*mEtEmail.getText().toString()*/"w.l.n.ishara@gmail.com");
+        customerReq.setArea_id(/*mSpUcArea.getSelectedItem()*/4);
+        customerReq.setLatitude(/*mEtLocationLongTiute.getText().toString()*/523);
+        customerReq.setLongitude(/*mEtLocationLatitute.getText().toString()*/1221);
+        customerReq.setAddress_1(/*mEtAddress1.getText().toString()*/"Test1");
+        customerReq.setAddress_2(/*mEtAddress2.getText().toString()*/"Test2");
+        customerReq.setAddress_3(/*mEtAddress3.getText().toString()*/"Test3");
+        customerReq.setTele_no(/*mEtAddress1.getText().toString()*/"0774523652");
+        customerReq.setDescription(/*mEtAddress1.getText().toString()*/"Test");
+        customerReq.setCategory_id(/*catSpinner.getSelectedItem().toString()*/1);
+        //customerReq.setVehicle_type_id(mSpUcVehicle.getSelectedItem().toString());
+
+        return  customerReq;
     }
 
 
