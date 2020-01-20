@@ -1,6 +1,7 @@
 package com.nibm.rwp.gms.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,17 +10,27 @@ import com.nibm.rwp.gms.R;
 import com.nibm.rwp.gms.adapter.CustomerRequestAdapter;
 import com.nibm.rwp.gms.common.BaseActivity;
 import com.nibm.rwp.gms.dto.CustomerRequest;
+import com.nibm.rwp.gms.dto.GarbageCategoryList;
+import com.nibm.rwp.gms.dto.UcArea;
+import com.nibm.rwp.gms.interfaces.EndPoints;
+import com.nibm.rwp.gms.utill.RetrofitClient;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DriverMapActivity extends BaseActivity {
 
-    //a list to store all the products
-    List<CustomerRequest> productList;
+    public static final String TAG = DriverMapActivity.class.getSimpleName();
 
-    //the recyclerview
-    RecyclerView recyclerView;
+
+    private RecyclerView recyclerView;
+    private ArrayList<CustomerRequest> carModels=new ArrayList<>();
+    private CustomerRequestAdapter customerRequestAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,25 +39,33 @@ public class DriverMapActivity extends BaseActivity {
 
         setToolbar(getResources().getString(R.string.activity_customer_request), DriverMapActivity.this);
 
-        //getting the recyclerview from xml
         recyclerView = findViewById(R.id.activity_driver_map_rl_recycleView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //initializing the productlist
-        productList = new ArrayList<>();
-
-        //adding some items to our list
-        productList.add(new CustomerRequest("Hasarel ", "29/2,Sarwodaya mw, Madola, Avissawella,Sri Lanka", "0713017537"));
-        productList.add(new CustomerRequest("Hasarel Madola", "29/2,Sarwodaya mw, Madola, Avissawella,Sri Lanka", "0713017537"));
-        productList.add(new CustomerRequest("Hasarel Madola", "29/2,Sarwodaya mw, Madola, Avissawella,Sri Lanka", "0713017537"));
-        productList.add(new CustomerRequest("Hasarel Madola", "29/2,Sarwodaya mw, Madola, Avissawella,Sri Lanka", "0713017537"));
-        productList.add(new CustomerRequest("Hasarel Madola", "29/2,Sarwodaya mw, Madola, Avissawella,Sri Lanka", "0713017537"));
-        productList.add(new CustomerRequest("Hasarel Madola", "29/2,Sarwodaya mw, Madola, Avissawella,Sri Lanka", "0713017537"));
-        productList.add(new CustomerRequest("Hasarel Madola", "29/2,Sarwodaya mw, Madola, Avissawella,Sri Lanka", "0713017537"));
-        CustomerRequestAdapter adapter = new CustomerRequestAdapter(this, productList);
-        recyclerView.setAdapter(adapter);
+        setDriverMap();
     }
+
+    private void setDriverMap(){
+
+        EndPoints service = RetrofitClient.getRetrofitInstance().create(EndPoints.class);
+        Call<List<CustomerRequest>> call = service.getDriverMap();
+        call.enqueue(new Callback<List<CustomerRequest>>() {
+            @Override
+            public void onResponse(Call<List<CustomerRequest>> call, Response<List<CustomerRequest>> response) {
+
+                carModels = new ArrayList<>(response.body());
+                customerRequestAdapter = new CustomerRequestAdapter(DriverMapActivity.this,carModels);
+                recyclerView.setAdapter(customerRequestAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<CustomerRequest>> call, Throwable t) {
+                Log.i(TAG, t.getMessage());
+            }
+        });
+    }
+
 
     @Override
     public boolean onSupportNavigateUp() {

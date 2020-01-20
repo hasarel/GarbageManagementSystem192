@@ -34,16 +34,18 @@ public class CustomerRequestAdapter extends RecyclerView.Adapter<CustomerRequest
     @Override
     public CustomerRequestAdapter.CustomerRequestViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
-        View view = inflater.inflate(R.layout.item_paymenthistory_recycleview, null);
+        View view = inflater.inflate(R.layout.driver_map_request, null);
         return new CustomerRequestViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CustomerRequestViewHolder holder,final int position) {
-        CustomerRequest paymentHistory = productList.get(position);
-        holder.mName.setText(paymentHistory.getName());
-        holder.mAddress.setText(paymentHistory.getAddress());
-        holder.mContactNo.setText(paymentHistory.getContacNo());
+        CustomerRequest customerRequest = productList.get(position);
+        holder.mName.setText(customerRequest.getCustomer_name());
+        holder.mAddress1.setText(customerRequest.getAddress_1());
+        holder.mAddress2.setText(customerRequest.getAddress_2());
+        holder.mAddress3.setText(customerRequest.getAddress_3());
+        holder.mContactNo.setText(customerRequest.getTele_no());
     }
 
     @Override
@@ -54,16 +56,18 @@ public class CustomerRequestAdapter extends RecyclerView.Adapter<CustomerRequest
 
     public class CustomerRequestViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mName,mAddress,mContactNo;
+        TextView mName,mAddress1,mAddress2,mAddress3,mContactNo;
         Button mLocation;
 
         public CustomerRequestViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            mName = itemView.findViewById(R.id.layout_item_paymentHistory_tv_name);
-            mAddress = itemView.findViewById(R.id.layout_item_paymentHistory_tv_address);
-            mContactNo = itemView.findViewById(R.id.layout_item_paymentHistory_tv_contactNo);
-            mLocation = itemView.findViewById(R.id.layout_item_paymentHistory_btn_openMap);
+            mName = itemView.findViewById(R.id.layout_driver_map_request_tv_name);
+            mAddress1 = itemView.findViewById(R.id.layout_driver_map_request_tv_address1);
+            mAddress2 = itemView.findViewById(R.id.layout_driver_map_request_tv_address2);
+            mAddress3 = itemView.findViewById(R.id.layout_driver_map_request_tv_address3);
+            mContactNo = itemView.findViewById(R.id.layout_driver_map_request_tv_contactNo);
+            mLocation = itemView.findViewById(R.id.layout_driver_map_request_btn_openMap);
         }
     }
 }
