@@ -96,7 +96,7 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
     }
 
     private void activity() {
-        Intent intent = new Intent(AddRequestActivity.this, AddPaymentActivity.class);
+        Intent intent = new Intent(AddRequestActivity.this, CreatePaymentActivity.class);
         startActivity(intent);
     }
 

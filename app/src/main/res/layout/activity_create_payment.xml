@@ -1,9 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.nibm.rwp.gms.activity.CreatePaymentActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/activity_create_payment_rl_relativeLayoutMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <RelativeLayout
+            android:id="@+id/activity_create_payment_rl_Base_relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/rounded_corners_white_background">
+
+            <RelativeLayout
+                android:id="@+id/activity_create_payment_rl_relativeLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/activity_create_payment_rl_tv_customerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_create_tv_customer_name" />
+
+                <EditText
+                    android:id="@+id/activity_create_payment_et_customer_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/activity_create_payment_rl_tv_customerName"
+                    android:maxLines="1"
+                    android:textColor="@color/colorListNormal1Text" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/activity_create_payment_rl_relativeLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_create_payment_rl_relativeLayout1"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/activity_create_payment_rl_tv_customerGarbageCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_create_tv_customer_customerGarbageCategory" />
+
+                <EditText
+                    android:id="@+id/activity_create_payment_et_customerGarbageCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/activity_create_payment_rl_tv_customerGarbageCategory"
+                    android:maxLines="1"
+                    android:textColor="@color/colorListNormal1Text" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/activity_create_payment_rl_relativeLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_create_payment_rl_relativeLayout2"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/activity_create_payment_rl_tv_customerGarbageVehicleType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_create_tv_customer_customerGarbageVehicleType" />
+
+                <EditText
+                    android:id="@+id/activity_create_payment_et_customerGarbageVehicleType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/activity_create_payment_rl_tv_customerGarbageVehicleType"
+                    android:maxLines="1"
+                    android:textColor="@color/colorListNormal1Text" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/activity_create_payment_rl_relativeLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_create_payment_rl_relativeLayout3"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/activity_create_payment_rl_tv_customerArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_create_tv_customer_customerArea" />
+
+                <EditText
+                    android:id="@+id/activity_create_payment_et_customerArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/activity_create_payment_rl_tv_customerArea"
+                    android:maxLines="1"
+                    android:textColor="@color/colorListNormal1Text" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/activity_create_payment_rl_relativeLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_create_payment_rl_relativeLayout4"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/activity_create_payment_rl_tv_customerTotalPayment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_create_tv_customer_customerTotalPayment" />
+
+                <EditText
+                    android:id="@+id/activity_create_payment_et_customerTotalPayment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/activity_create_payment_rl_tv_customerTotalPayment"
+                    android:maxLines="1"
+                    android:textColor="@color/colorListNormal1Text" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/activity_create_payment_rl_relativeLayout6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_create_payment_rl_relativeLayout5"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:padding="10dp">
+
+                <Button
+                    android:id="@+id/activity_create_payment_btn_continue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_corners_button"
+                    android:text="@string/activity_create_btn_customer_continue"
+                    android:textAllCaps="false" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -47,7 +47,6 @@
             android:layout_below="@id/activity_add_request_rl_relativeLayout0"
             android:layout_width="match_parent"
             android:padding="10dp"
-            android:gravity="center"
             android:layout_marginTop="50dp"
             android:layout_height="wrap_content">
 
@@ -110,7 +109,6 @@
             android:layout_below="@id/activity_addRequest_rl_relativeLayout_description"
             android:layout_width="match_parent"
             android:padding="10dp"
-            android:gravity="center"
             android:layout_marginTop="5dp"
             android:layout_height="wrap_content">
 
@@ -192,35 +190,11 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/activity_addRequest_rl_relativeLayout_name"
+            android:id="@+id/activity_addPayment_rl_relativeLayout_area"
             android:layout_below="@id/activity_addRequest_rl_relativeLayout_location2"
             android:layout_width="match_parent"
             android:padding="10dp"
-            android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/activity_add_request_tilname"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/activity_add_request_et_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/activity_create_new_et_customer_name_hint"
-                    android:textColor="@color/colorListNormal1Text"
-                    android:inputType="text"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/activity_addPayment_rl_relativeLayout_area"
-            android:layout_below="@id/activity_addRequest_rl_relativeLayout_name"
-            android:layout_width="match_parent"
-            android:padding="10dp"
-            android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_height="wrap_content">
 
@@ -255,8 +229,32 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/activity_addRequest_rl_relativeLayout_address1"
+            android:id="@+id/activity_addRequest_rl_relativeLayout_name"
             android:layout_below="@id/activity_add_request_rl_relativeLayout_area_spinner"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/activity_add_request_tilname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/activity_add_request_et_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/activity_create_new_et_customer_name_hint"
+                    android:textColor="@color/colorListNormal1Text"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/activity_addRequest_rl_relativeLayout_address1"
+            android:layout_below="@id/activity_addRequest_rl_relativeLayout_name"
             android:layout_width="match_parent"
             android:padding="10dp"
             android:layout_height="wrap_content">

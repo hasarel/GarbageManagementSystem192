@@ -25,6 +25,16 @@
     <string name="activity_login_btn_faceboook_login">Log in with FaceBook</string>
     <!--End of Login Activity-->
 
+    <!--Activity Create Payment-->
+    <string name="activity_create_tv_customer_name">Customer Name</string>
+    <string name="activity_create_tv_customer_customerGarbageCategory">Selected Garbage Category</string>
+    <string name="activity_create_tv_customer_customerGarbageVehicleType">Selected Garbage Vehicle Type</string>
+    <string name="activity_create_tv_customer_customerArea">Selected Customer Area</string>
+    <string name="activity_create_tv_customer_customerTotalPayment">Total Payment</string>
+    <string name="activity_create_btn_customer_continue">Continue</string>
+
+    <!--end of Activity Create Payment-->
+
     <!--Activity Register-->
     <string name="activity_register_et_fname">First name</string>
     <string name="activity_register_et_lname">Last name</string>
@@ -49,9 +59,9 @@
 
     <!--Activity Add Request-->
     <string name="activity_add_request_tv_text">Create Request</string>
-    <string name="activity_add_request_tv_category">- - - - - - Garbage Category Type- - - - - - </string>
-    <string name="activity_add_request_tv_vehicle_category">- - - - - - Garbage Vehicle Type - - - - - -</string>
-    <string name="activity_add_request_tv_area">- - - - - - Select Your Area- - - - - - </string>
+    <string name="activity_add_request_tv_category">Garbage Category Type</string>
+    <string name="activity_add_request_tv_vehicle_category">Garbage Vehicle Type</string>
+    <string name="activity_add_request_tv_area">Select Your Area</string>
     <string name="activity_add_request_tv_description">Description</string>
     <string name="activity_add_request_et_hint_description">Please Type Here Your Description...</string>
     <string name="activity_add_request_et_location_hint">Your Location Longitude</string>
@@ -75,6 +85,7 @@
     <string name="activity_forgetPassword">Forget Password</string>
     <string name="activity_addrequest">Add Request</string>
     <string name="activity_addpayment">Add Payment</string>
+    <string name="activity_create_payment">Create Payment</string>
     <string name="activity_paymenthistoery">Payment History</string>
     <string name="activity_request_history">Request History</string>
     <string name="activity_about">About</string>
