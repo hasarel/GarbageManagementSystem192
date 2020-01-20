@@ -2,6 +2,7 @@ package com.nibm.rwp.gms.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,10 +49,16 @@ public class CreatePaymentActivity extends BaseActivity implements View.OnClickL
         mBtnContinue.setOnClickListener(this);
     }
 
+    private void changeActivity(){
+        Intent intent = new Intent(CreatePaymentActivity.this,AddPaymentActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.activity_create_payment_btn_continue:
+                changeActivity();
         }
     }
 }
