@@ -33,7 +33,7 @@ public class PaymentHistoryAdapter extends RecyclerView.Adapter<PaymentHistoryAd
     @Override
     public PaymentHistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
-        View view = inflater.inflate(R.layout.item_paymenthistory_recycleview, null);
+        View view = inflater.inflate(R.layout.layout_payment_history, null);
         return new PaymentHistoryViewHolder(view);
     }
 
@@ -41,9 +41,9 @@ public class PaymentHistoryAdapter extends RecyclerView.Adapter<PaymentHistoryAd
     public void onBindViewHolder(@NonNull PaymentHistoryViewHolder holder, int position) {
 
         PaymentHistory paymentHistory = productList.get(position);
-        holder.mName.setText(paymentHistory.getName());
-        holder.mAddress.setText(paymentHistory.getAddress());
-        holder.mContactNo.setText(paymentHistory.getContacNo());
+        holder.mName.setText(paymentHistory.getCustomer_name());
+        holder.mDateTime.setText(paymentHistory.getCreated_at());
+        holder.mContactNo.setText(paymentHistory.getTele_no());
     }
 
     @Override
@@ -53,14 +53,14 @@ public class PaymentHistoryAdapter extends RecyclerView.Adapter<PaymentHistoryAd
 
     public class PaymentHistoryViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mName,mAddress,mContactNo;
+        TextView mName,mDateTime,mContactNo;
 
         public PaymentHistoryViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            mName = itemView.findViewById(R.id.layout_item_paymentHistory_tv_name);
-            mAddress = itemView.findViewById(R.id.layout_item_paymentHistory_tv_address);
-            mContactNo = itemView.findViewById(R.id.layout_item_paymentHistory_tv_contactNo);
+            mName = itemView.findViewById(R.id.layout_payment_History_tv_name);
+            mDateTime = itemView.findViewById(R.id.layout_payment_History_tv_date);
+            mContactNo = itemView.findViewById(R.id.layout_item_payment_History_tv_contact);
         }
     }
 }

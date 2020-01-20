@@ -422,66 +422,6 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
         }
     }
 
-    /*private void setCustomerRequest() {
-
-        EndPoints service = RetrofitClient.getRetrofitInstance().create(EndPoints.class);
-    *//*    Call<GarbageRequest> call = service.setCustomerRequest(
-                mEtName.getText().toString(),
-                mEtEmail.getText().toString(),
-                mSpUcArea.getSelectedItem().toString(),
-                mEtLocationLongTiute.getText().toString(),
-                mEtLocationLatitute.getText().toString(),
-                mEtAddress1.getText().toString(),
-                mEtAddress2.getText().toString(),
-                mEtAddress3.getText().toString(),
-                mEtContactNo.getText().toString(),
-                mEtDescription.getText().toString(),
-                catSpinner.getSelectedItem().toString(),
-                mSpUcVehicle.getSelectedItem().toString());*//*
-
-        Call<GarbageRequest> call = service.setCustomerRequest(getCustomerReq());
-
-                Log.i("VALUES",mEtName.getText().toString());
-                Log.i("VALUES",mEtEmail.getText().toString());
-                Log.i("VALUES",mSpUcArea.getSelectedItem().toString());
-                Log.i("VALUES",mEtLocationLongTiute.getText().toString());
-                Log.i("VALUES",mEtLocationLatitute.getText().toString());
-                Log.i("VALUES",mEtAddress1.getText().toString());
-                Log.i("VALUES",mEtAddress2.getText().toString());
-                Log.i("VALUES",mEtAddress3.getText().toString());
-                Log.i("VALUES",mEtContactNo.getText().toString());
-                Log.i("VALUES",mEtDescription.getText().toString());
-                Log.i("VALUES",catSpinner.getSelectedItem().toString());
-                Log.i("VALUES",mSpUcVehicle.getSelectedItem().toString());
-
-
-        call.enqueue(new Callback<GarbageRequest>() {
-            @Override
-            public void onResponse(Call<GarbageRequest> call, Response<GarbageRequest> response) {
-                if (response.isSuccessful()) {
-                    if (response.code() == 200) {
-                        Log.w("RESP","------------ success-----");
-                        GarbageRequest myResponse = response.body();
-                        if (myResponse != null) {
-                            Toast.makeText(AddRequestActivity.this, "Successfully Executed", Toast.LENGTH_LONG).show();
-                        }
-
-                    }else{
-                        Log.w("RESP","------------ service error-----");
-                    }
-                }else{
-                    Log.w("RESP","------------ service error-----");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<GarbageRequest> call, Throwable t) {
-                Log.i(TAG, t.toString());
-                Toast.makeText(AddRequestActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_LONG).show();
-            }
-        });
-    }*/
-
     private void sendCustomerReq(){
         try {
             EndPoints service = RetrofitClient.getRetrofitInstance().create(EndPoints.class);
@@ -491,8 +431,6 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
                 public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
                     //Log.i("onResponse", response.message());
                     Log.i(TAG, "onResponse");
-
-
 
                     if (response != null)
                         Log.w("RESP", "------- "+response.body());
@@ -510,7 +448,7 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
 
     private GarbageRequest getCustomerReq() {
         GarbageRequest customerReq = new GarbageRequest();
-        customerReq.setUser_id(3); //TODO set user id here
+        customerReq.setUser_id(3);
         customerReq.setCustomer_name(/*mEtName.getText().toString()*/"W.L. Nipun Ishagdfgda");
         customerReq.setEmail(/*mEtEmail.getText().toString()*/"w.l.n.ishara@gmail.com");
         customerReq.setArea_id(/*mSpUcArea.getSelectedItem()*/4);
@@ -522,7 +460,7 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
         customerReq.setTele_no(/*mEtAddress1.getText().toString()*/"0774523652");
         customerReq.setDescription(/*mEtAddress1.getText().toString()*/"Test");
         customerReq.setCategory_id(/*catSpinner.getSelectedItem().toString()*/1);
-        //customerReq.setVehicle_type_id(mSpUcVehicle.getSelectedItem().toString());
+        customerReq.setVehicle_type_id(/*mSpUcVehicle.getSelectedItem()*/2);
 
         return  customerReq;
     }

@@ -4,6 +4,8 @@ import com.google.gson.JsonElement;
 import com.nibm.rwp.gms.dto.CustomerRequest;
 import com.nibm.rwp.gms.dto.GarbageCategoryList;
 import com.nibm.rwp.gms.dto.GarbageRequest;
+import com.nibm.rwp.gms.dto.PaymentHistory;
+import com.nibm.rwp.gms.dto.RequestHistory;
 import com.nibm.rwp.gms.dto.UcArea;
 import com.nibm.rwp.gms.dto.UcVehicleList;
 
@@ -27,6 +29,12 @@ public interface EndPoints {
 
     @GET("/customer/all/request")
     Call<List<CustomerRequest>> getDriverMap();
+
+    @GET("/customer/all/request")
+    Call<List<RequestHistory>> getRequestHistory();
+
+    @GET("/customer/all/request")
+    Call<List<PaymentHistory>> getPaymentHistory();
 
     @GET("/vehicle/types")
     Call<List<UcVehicleList>> getUcVehicle();

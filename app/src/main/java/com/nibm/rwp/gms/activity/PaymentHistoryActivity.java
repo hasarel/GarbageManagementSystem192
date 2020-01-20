@@ -5,22 +5,32 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.nibm.rwp.gms.R;
+import com.nibm.rwp.gms.adapter.CustomerRequestAdapter;
 import com.nibm.rwp.gms.adapter.PaymentHistoryAdapter;
 import com.nibm.rwp.gms.common.BaseActivity;
+import com.nibm.rwp.gms.dto.CustomerRequest;
 import com.nibm.rwp.gms.dto.PaymentHistory;
+import com.nibm.rwp.gms.interfaces.EndPoints;
+import com.nibm.rwp.gms.utill.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class PaymentHistoryActivity extends BaseActivity {
 
-    //a list to store all the products
-    List<PaymentHistory> productList;
+    public static final String TAG = PaymentHistoryActivity.class.getSimpleName();
 
-    //the recyclerview
-    RecyclerView recyclerView;
+
+    private RecyclerView recyclerView;
+    private ArrayList<PaymentHistory> carModels=new ArrayList<>();
+    private PaymentHistoryAdapter paymentHistoryAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,25 +39,31 @@ public class PaymentHistoryActivity extends BaseActivity {
 
         setToolbar(getResources().getString(R.string.activity_paymenthistoery), PaymentHistoryActivity.this);
 
-        //getting the recyclerview from xml
         recyclerView = findViewById(R.id.activity_paymentHistory_rl_recycleView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //initializing the productlist
-        productList = new ArrayList<>();
+        setDriverMap();
+    }
 
+    private void setDriverMap(){
 
-        //adding some items to our list
-        productList.add(new PaymentHistory("Hasarel Madola","29/2,Sarwodaya mw, Madola, Avissawella,Sri Lanka","0713017537"));
-        productList.add(new PaymentHistory("Hasarel Madola","29/2,Sarwodaya mw, Madola, Avissawella,Sri Lanka","0713017537"));
-        productList.add(new PaymentHistory("Hasarel Madola","29/2,Sarwodaya mw, Madola, Avissawella,Sri Lanka","0713017537"));
-        productList.add(new PaymentHistory("Hasarel Madola","29/2,Sarwodaya mw, Madola, Avissawella,Sri Lanka","0713017537"));
-        productList.add(new PaymentHistory("Hasarel Madola","29/2,Sarwodaya mw, Madola, Avissawella,Sri Lanka","0713017537"));
-        productList.add(new PaymentHistory("Hasarel Madola","29/2,Sarwodaya mw, Madola, Avissawella,Sri Lanka","0713017537"));
-        productList.add(new PaymentHistory("Hasarel Madola","29/2,Sarwodaya mw, Madola, Avissawella,Sri Lanka","0713017537"));
-        PaymentHistoryAdapter adapter = new PaymentHistoryAdapter(this, productList);
-        recyclerView.setAdapter(adapter);
+        EndPoints service = RetrofitClient.getRetrofitInstance().create(EndPoints.class);
+        Call<List<PaymentHistory>> call = service.getPaymentHistory();
+        call.enqueue(new Callback<List<PaymentHistory>>() {
+            @Override
+            public void onResponse(Call<List<PaymentHistory>> call, Response<List<PaymentHistory>> response) {
+
+                carModels = new ArrayList<>(response.body());
+                paymentHistoryAdapter = new PaymentHistoryAdapter(PaymentHistoryActivity.this,carModels);
+                recyclerView.setAdapter(paymentHistoryAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<PaymentHistory>> call, Throwable t) {
+                Log.i(TAG, t.getMessage());
+            }
+        });
     }
 
     @Override

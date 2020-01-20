@@ -33,7 +33,7 @@ public class RequestHistoryAdapter extends RecyclerView.Adapter<RequestHistoryAd
     @Override
     public RequestHistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
-        View view = inflater.inflate(R.layout.item_requesthistory_recycleview, null);
+        View view = inflater.inflate(R.layout.layout_request_history, null);
         return new RequestHistoryAdapter.RequestHistoryViewHolder(view);
     }
 
@@ -41,9 +41,10 @@ public class RequestHistoryAdapter extends RecyclerView.Adapter<RequestHistoryAd
     public void onBindViewHolder(@NonNull RequestHistoryViewHolder holder, int position) {
 
         RequestHistory requestHistory = productList.get(position);
-        holder.mName.setText(requestHistory.getName());
-        holder.mAddress.setText(requestHistory.getAddress());
-        holder.mContactNo.setText(requestHistory.getContacNo());
+        holder.mName.setText(requestHistory.getCustomer_name());
+        holder.mDateTime.setText(requestHistory.getUpdated_at());
+        holder.mCategory.setText(requestHistory.getCategory_id());
+        holder.mStatus.setText(requestHistory.getStatus());
     }
 
     @Override
@@ -53,14 +54,16 @@ public class RequestHistoryAdapter extends RecyclerView.Adapter<RequestHistoryAd
 
     public class RequestHistoryViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mName,mAddress,mContactNo;
+        TextView mName,mCategory,mDateTime,mStatus;
 
         public RequestHistoryViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            mName = itemView.findViewById(R.id.layout_item_requestHistory_tv_name);
-            mAddress = itemView.findViewById(R.id.layout_item_requestHistory_tv_address);
-            mContactNo = itemView.findViewById(R.id.layout_item_requestHistory_tv_contactNo);
+            mName = itemView.findViewById(R.id.layout_request_History_tv_name);
+            mCategory = itemView.findViewById(R.id.layout_request_History_tv_garbageCategory);
+            mDateTime = itemView.findViewById(R.id.layout_request_tHistory_tv_dateTime);
+            mStatus = itemView.findViewById(R.id.layout_request_History_tv_status);
+
         }
     }
 }

@@ -4,6 +4,17 @@ public class GarbageRequest {
 
     private String customer_name;
     private String email;
+    private int area_id;
+    private double longitude;
+    private double latitude;
+    private String address_1;
+    private String address_2;
+    private String address_3;
+    private String tele_no;
+    private String description;
+    private int category_id;
+    private int vehicle_type_id;
+    private int user_id;
 
     public int getArea_id() {
         return area_id;
@@ -12,8 +23,6 @@ public class GarbageRequest {
     public void setArea_id(int area_id) {
         this.area_id = area_id;
     }
-
-    private int area_id;
 
     public double getLongitude() {
         return longitude;
@@ -31,13 +40,6 @@ public class GarbageRequest {
         this.latitude = latitude;
     }
 
-    private double longitude;
-    private double latitude;
-    private String address_1;
-    private String address_2;
-    private String address_3;
-    private String tele_no;
-    private String description;
 
     public int getCategory_id() {
         return category_id;
@@ -47,9 +49,6 @@ public class GarbageRequest {
         this.category_id = category_id;
     }
 
-    private int category_id;
-    private String vehicle_type_id;
-    private int user_id;
 
     public int getUser_id() {
         return user_id;
@@ -65,11 +64,11 @@ public class GarbageRequest {
 
     }
 
-    public String getVehicle_type_id() {
+    public int getVehicle_type_id() {
         return vehicle_type_id;
     }
 
-    public void setVehicle_type_id(String vehicle_type_id) {
+    public void setVehicle_type_id(int vehicle_type_id) {
         this.vehicle_type_id = vehicle_type_id;
     }
 
@@ -133,7 +132,7 @@ public class GarbageRequest {
 
 
     public GarbageRequest( String customer_name, String email, int area_id, double longitude, double latitude,
-                          String address_1, String address_2, String address_3, String tele_no, String description, int category_id, String vehicle_type_id) {
+                          String address_1, String address_2, String address_3, String tele_no, String description, int category_id, int vehicle_type_id) {
         this.customer_name = customer_name;
         this.email = email;
         this.area_id = area_id;
