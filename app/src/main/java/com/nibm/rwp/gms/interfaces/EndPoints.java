@@ -1,6 +1,5 @@
 package com.nibm.rwp.gms.interfaces;
 
-import com.nibm.rwp.gms.dto.CustomerRequest;
 import com.nibm.rwp.gms.dto.GarbageCategoryList;
 import com.nibm.rwp.gms.dto.GarbageRequest;
 import com.nibm.rwp.gms.dto.UcArea;
@@ -25,9 +24,6 @@ public interface EndPoints {
 
     @GET("/vehicle/types")
     Call<List<UcVehicleList>> getUcVehicle();
-
-    @GET("customer/all/request")
-    Call<List<CustomerRequest>> getDriverMap();
 
     @POST("/customer/request")
     @FormUrlEncoded
