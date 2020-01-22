@@ -50,8 +50,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         SharedPreferences prf = getSharedPreferences("details", MODE_PRIVATE);
 
-        String email = prf.getString("email", "no values");
-        String password = prf.getString("password","no values");
+        String email = prf.getString("email", "");
+        String password = prf.getString("password","");
         mEtemail.setText(email);
         mEtpassword.setText(password);
     }
@@ -126,6 +126,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                        getResources().getString(R.string.ok_text), false);
                return;
            }
+
+
 
            if (mEtemail.getText().toString().equals("admin") && mEtpassword.getText().toString().equals("admin")) {
 

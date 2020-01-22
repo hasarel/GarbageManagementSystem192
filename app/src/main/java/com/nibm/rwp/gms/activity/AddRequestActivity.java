@@ -134,12 +134,12 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
 
     private void sharedPreferences() {
         SharedPreferences prf = getSharedPreferences("details", MODE_PRIVATE);
-        String fname = prf.getString("fname", "no value");
-        String address1 = prf.getString("address1", "no value");
-        String address2 = prf.getString("address2", "no value");
-        String address3 = prf.getString("address3", "no value");
-        String contact = prf.getString("contact", "no values");
-        String email = prf.getString("email", "no values");
+        String fname = prf.getString("fname", "");
+        String address1 = prf.getString("address1", "");
+        String address2 = prf.getString("address2", "");
+        String address3 = prf.getString("address3", "");
+        String contact = prf.getString("contact", "");
+        String email = prf.getString("email", "");
         mEtName.setText(fname);
         mEtAddress1.setText(address1);
         mEtAddress2.setText(address2);
