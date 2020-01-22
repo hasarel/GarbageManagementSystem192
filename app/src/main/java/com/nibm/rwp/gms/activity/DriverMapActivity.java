@@ -1,7 +1,9 @@
 package com.nibm.rwp.gms.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +15,7 @@ import com.nibm.rwp.gms.dto.CustomerRequest;
 import com.nibm.rwp.gms.dto.GarbageCategoryList;
 import com.nibm.rwp.gms.dto.UcArea;
 import com.nibm.rwp.gms.interfaces.EndPoints;
+import com.nibm.rwp.gms.listeners.OnItemClickListener;
 import com.nibm.rwp.gms.utill.RetrofitClient;
 
 import java.util.ArrayList;
@@ -72,6 +75,5 @@ public class DriverMapActivity extends BaseActivity {
         onBackPressed();
         return true;
     }
-
 
 }

@@ -50,7 +50,6 @@
                         android:hint="@string/activity_login_et_username"
                         android:textColor="@color/colorListNormal1Text"
                         android:inputType="text"
-                        android:text="test123@gmail.com"
                         android:maxLines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -77,7 +76,6 @@
                         android:hint="@string/activity_login_et_password"
                         android:textColor="@color/colorListNormal1Text"
                         android:inputType="textPassword"
-                        android:text="test123"
                         android:maxLines="1" />
 
                 </com.google.android.material.textfield.TextInputLayout>

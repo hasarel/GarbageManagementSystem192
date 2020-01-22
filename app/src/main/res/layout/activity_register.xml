@@ -240,6 +240,7 @@
                     android:textColor="@color/colorListNormal1Text"
                     android:inputType="text"
                     android:maxLines="1" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
         </RelativeLayout>

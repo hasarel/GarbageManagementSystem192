@@ -115,8 +115,7 @@
     <string name="success_text">Success</string>
     <string name="sign_out_text">Sign Out</string>
     <string name="no_internet_connection_text">No Internet connection</string>
-    <string name="confim_request">Are You Sure
-        you want Continue ? </string>
+    <string name="confim_request">Are You Sure you want Continue ? </string>
     <string name="cancel_request"></string>
     <string name="no_data_fetched">No any data fetched!</string>
     <string name="turn_on_internet_connection_text">You have no active internet connection on this device. Please turn on mobile data or connect to wifi to proceed</string>
@@ -125,6 +124,14 @@
     <string name="fill_all_fields_message">Please fill all fields</string>
     <string name="fill_email_fields_message">Please fill email field</string>
     <string name="fill_password_fields_message">Please fill password field</string>
+    <string name="email_verification_error">Please Verification Email!</string>
+    <string name="email_verification_message">Please check your inbox and follow the instructions...</string>
+    <string name="password_reset">Please check your email!</string>
+    <string name="password_reset_message">Please check your inbox and follow the instructions...</string>
+    <string name="password_reset_error">Invalid Email Address!</string>
+    <string name="request_error">UnSuccessfully!</string>
+    <string name="request_error_message">Your Request is UnSuccessfully!</string>
+    <string name="password_reset_error_message">Please check your email again!</string>
     <string name="operations_failed_message">Operations failed.\nPlease try again.</string>
     <string name="settings_text">Settings</string>
     <string name="alert_text">Alert</string>

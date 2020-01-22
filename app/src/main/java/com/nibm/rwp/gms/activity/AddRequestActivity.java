@@ -3,6 +3,7 @@ package com.nibm.rwp.gms.activity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -45,8 +46,6 @@ import com.nibm.rwp.gms.listeners.OnCatClickListener;
 import com.nibm.rwp.gms.utill.AppUtill;
 import com.nibm.rwp.gms.utill.RetrofitClient;
 
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,12 +79,16 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
     private RecyclerView mUcVehicleRecycleView;
     private Spinner mSpUcVehicle;
 
+    private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_request);
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
+        progressDialog = new ProgressDialog(this);
 
         getLastLocation();
 
@@ -98,9 +101,16 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
         sharedPreferences();
     }
 
-    private void activity() {
-        Intent intent = new Intent(AddRequestActivity.this, CreatePaymentActivity.class);
-        startActivity(intent);
+    private void showProgressDialogWithTitle(String substring) {
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage(substring);
+        progressDialog.show();
+    }
+
+    private void hideProgressDialogWithTitle() {
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.dismiss();
     }
 
     private void confirmDialog() {
@@ -113,7 +123,7 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
-                        activity();
+                        sendCustomerReq();
                     }
                 },
                 null,
@@ -272,8 +282,8 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.activity_add_request_btn_progress:
-                sendCustomerReq();
-                //confirmDialog();
+
+                confirmDialog();
                 break;
         }
     }
@@ -424,6 +434,7 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
 
     private void sendCustomerReq(){
         try {
+            showProgressDialogWithTitle("Uploading....");
             EndPoints service = RetrofitClient.getRetrofitInstance().create(EndPoints.class);
             Call<JsonElement> call = service.setCustomerRequest(getCustomerReq());
             call.enqueue(new Callback<JsonElement>() {
@@ -432,13 +443,22 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
                     //Log.i("onResponse", response.message());
                     Log.i(TAG, "onResponse");
 
-                    if (response != null)
+                    Toast.makeText(AddRequestActivity.this,"Error"+response.toString(),Toast.LENGTH_LONG).show();
+
+                    if (response != null){
                         Log.w("RESP", "------- "+response.body());
+                        hideProgressDialogWithTitle();
+                    }
                 }
 
                 @Override
                 public void onFailure(Call<JsonElement> call, Throwable t) {
                     Log.i(TAG, t.getMessage());
+                    hideProgressDialogWithTitle();
+
+                    String error = t.getMessage();
+                    Toast.makeText(AddRequestActivity.this,"Error " +error,Toast.LENGTH_LONG).show();
+                  //  requestActivityErrorDialog();
                 }
             });
         } catch (Exception e) {
@@ -446,22 +466,32 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
         }
     }
 
+//    private void requestActivityErrorDialog(){
+//        final AlertDialog dialog = new AlertDialog.Builder(AddRequestActivity.this).create();
+//        AppUtill.showCustomStandardAlert(dialog,
+//                AddRequestActivity.this,
+//                getResources().getString(R.string.request_error),
+//                getResources().getString(R.string.request_error_message),
+//                getResources().getDrawable(R.drawable.icons8_error),
+//                null,
+//                getResources().getString(R.string.ok_text), false);
+//    }
+
     private GarbageRequest getCustomerReq() {
         GarbageRequest customerReq = new GarbageRequest();
         customerReq.setUser_id(3);
-        customerReq.setCustomer_name(/*mEtName.getText().toString()*/"madola");
-        customerReq.setEmail(/*mEtEmail.getText().toString()*/"w.l.n.ishara@gmail.com");
-        customerReq.setArea_id(/*mSpUcArea.getSelectedItem()*/4);
+        customerReq.setCustomer_name(mEtName.getText().toString());
+        customerReq.setEmail(mEtEmail.getText().toString());
+        customerReq.setArea_id(mSpUcArea.getId());
         customerReq.setLatitude(/*mEtLocationLongTiute.getText().toString()*/523);
         customerReq.setLongitude(/*mEtLocationLatitute.getText().toString()*/1221);
-        customerReq.setAddress_1(/*mEtAddress1.getText().toString()*/"Test1");
-        customerReq.setAddress_2(/*mEtAddress2.getText().toString()*/"Test2");
-        customerReq.setAddress_3(/*mEtAddress3.getText().toString()*/"Test3");
-        customerReq.setTele_no(/*mEtAddress1.getText().toString()*/"0774523652");
-        customerReq.setDescription(/*mEtAddress1.getText().toString()*/"Test");
+        customerReq.setAddress_1(mEtAddress1.getText().toString());
+        customerReq.setAddress_2(mEtAddress2.getText().toString());
+        customerReq.setAddress_3(mEtAddress3.getText().toString());
+        customerReq.setTele_no(mEtAddress1.getText().toString());
+        customerReq.setDescription(mEtAddress1.getText().toString());
         customerReq.setCategory_id(/*catSpinner.getSelectedItem().toString()*/1);
-       // customerReq.setArea_id(Integer.parseInt(mSpUcArea.getSelectedItem().toString()));
-        //customerReq.setVehicle_type_id(Integer.parseInt(mSpUcVehicle.getSelectedItem().toString()));
+        customerReq.setVehicle_type_id(/*mSpUcVehicle.getSelectedItem().toString()*/3);
 
         return  customerReq;
     }

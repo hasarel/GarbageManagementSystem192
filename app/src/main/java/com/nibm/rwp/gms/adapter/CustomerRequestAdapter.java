@@ -1,30 +1,34 @@
 package com.nibm.rwp.gms.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nibm.rwp.gms.R;
+import com.nibm.rwp.gms.activity.AddRequestActivity;
+import com.nibm.rwp.gms.activity.DriverMapActivity;
 import com.nibm.rwp.gms.dto.CustomerRequest;
+import com.nibm.rwp.gms.listeners.OnItemClickListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerRequestAdapter extends RecyclerView.Adapter<CustomerRequestAdapter.CustomerRequestViewHolder>{
+public class CustomerRequestAdapter extends RecyclerView.Adapter<CustomerRequestAdapter.CustomerRequestViewHolder> {
 
-    //this context we will use to inflate the layout
+
     private Context mCtx;
-
-    //we are storing all the products in a list
     private List<CustomerRequest> productList;
 
-
-    //getting the context and product list with constructor
     public CustomerRequestAdapter(Context mCtx, List<CustomerRequest> productList) {
         this.mCtx = mCtx;
         this.productList = productList;
@@ -46,13 +50,23 @@ public class CustomerRequestAdapter extends RecyclerView.Adapter<CustomerRequest
         holder.mAddress2.setText(customerRequest.getAddress_2());
         holder.mAddress3.setText(customerRequest.getAddress_3());
         holder.mContactNo.setText(customerRequest.getTele_no());
+
+        holder.mLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse("google.navigation:6.856245+80.258617"));
+                mCtx.startActivity(intent);
+
+                Toast.makeText(mCtx,"My Position is :" +position,Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return productList.size();
     }
-
 
     public class CustomerRequestViewHolder extends RecyclerView.ViewHolder {
 
@@ -68,6 +82,9 @@ public class CustomerRequestAdapter extends RecyclerView.Adapter<CustomerRequest
             mAddress3 = itemView.findViewById(R.id.layout_driver_map_request_tv_address3);
             mContactNo = itemView.findViewById(R.id.layout_driver_map_request_tv_contactNo);
             mLocation = itemView.findViewById(R.id.layout_driver_map_request_btn_openMap);
+
         }
     }
+
+
 }
