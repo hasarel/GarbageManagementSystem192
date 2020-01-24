@@ -55,7 +55,7 @@ public class CustomerRequestAdapter extends RecyclerView.Adapter<CustomerRequest
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                        Uri.parse("google.navigation:6.856245+80.258617"));
+                        Uri.parse("http://maps.google.com/maps?saddr=80.221938,9.936355&daddr=80.196912,6.942714"));
                 mCtx.startActivity(intent);
 
                 Toast.makeText(mCtx,"My Position is :" +position,Toast.LENGTH_SHORT).show();

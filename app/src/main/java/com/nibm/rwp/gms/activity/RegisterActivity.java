@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,14 +20,25 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.gson.JsonElement;
 import com.nibm.rwp.gms.R;
 import com.nibm.rwp.gms.common.BaseActivity;
+import com.nibm.rwp.gms.dto.CustomerData;
+import com.nibm.rwp.gms.interfaces.EndPoints;
 import com.nibm.rwp.gms.utill.AppUtill;
+import com.nibm.rwp.gms.utill.RetrofitClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegisterActivity extends BaseActivity implements View.OnClickListener {
 
+    //Constant
+    public static final String TAG = RegisterActivity.class.getSimpleName();
+
     //Ui components
-    private EditText mEtFname, mEtLname, mEtAddress1, mEtAddress2, mEtAddress3, mEtContact, mEtEmail, mEtPassword;
+    private EditText mEtFname, mEtLname, mEtAddress1, mEtAddress2, mEtAddress3, mEtContact, mEtEmail, mEtPassword, mEtNic;
     private Button mBtnRegister;
     private ProgressDialog progressDialog;
 
@@ -47,13 +59,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     private void showProgressDialogWithTitle(String substring) {
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        //Without this user can hide loader by tapping outside screen
         progressDialog.setCancelable(false);
         progressDialog.setMessage(substring);
         progressDialog.show();
     }
 
-    // Method to hide/ dismiss Progress bar
+
     private void hideProgressDialogWithTitle() {
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.dismiss();
@@ -73,6 +84,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         mEtAddress3 = findViewById(R.id.activity_Register_et_address3);
         mEtContact = findViewById(R.id.activity_Register_et_contactNo);
         mEtEmail = findViewById(R.id.activity_Register_et_email);
+        mEtNic = findViewById(R.id.activity_Register_et_nic);
         mEtPassword = findViewById(R.id.activity_Register_et_password);
         mBtnRegister.setOnClickListener(this);
     }
@@ -97,9 +109,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         editor.putString("password", password);
         editor.commit();
     }
-
-
-
 
     public void userRegister() {
 
@@ -143,8 +152,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
                             hideProgressDialogWithTitle();
                             sendEmailVerificationMessage();
-                            Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
-                            startActivity(intent);
+//                            Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+//                            startActivity(intent);
 
                         } else
 
@@ -162,14 +171,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
                     if (task.isSuccessful()){
 
-//                        final AlertDialog dialog = new AlertDialog.Builder(RegisterActivity.this).create();
-//                        AppUtill.showCustomStandardAlert(dialog,
-//                                RegisterActivity.this,
-//                                getResources().getString(R.string.email_verification_error),
-//                                getResources().getString(R.string.email_verification_message),
-//                                getResources().getDrawable(R.drawable.verify),
-//                                null,
-//                                getResources().getString(R.string.ok_text), false);
                         Toast.makeText(RegisterActivity.this,"Please check your inbox",Toast.LENGTH_LONG).show();
 
                     } else {
@@ -182,13 +183,54 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         }
     }
 
+    private void setCustomerDetailsSave(){
+        try {
+            showProgressDialogWithTitle("Uploading....");
+            EndPoints service = RetrofitClient.getRetrofitInstance().create(EndPoints.class);
+            Call<JsonElement> call = service.setCustomerData(getCustomerData());
+            call.enqueue(new Callback<JsonElement>() {
+                @Override
+                public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                    hideProgressDialogWithTitle();
+                    Toast.makeText(RegisterActivity.this,"Successfully ",Toast.LENGTH_LONG).show();
+
+                }
+
+                @Override
+                public void onFailure(Call<JsonElement> call, Throwable t) {
+                    Log.i(TAG, t.getMessage());
+                   hideProgressDialogWithTitle();
+
+                    String error = t.getMessage();
+                    Toast.makeText(RegisterActivity.this,"Error " +error,Toast.LENGTH_LONG).show();
+                    //  requestActivityErrorDialog();
+                }
+            });
+        } catch (Exception e) {
+            Log.i(TAG, "Exception");
+        }
+    }
+
+    private CustomerData getCustomerData(){
+        CustomerData customerData = new CustomerData();
+        customerData.setFirst_name(mEtFname.getText().toString());
+        customerData.setAddress_line_1(mEtAddress1.getText().toString());
+        customerData.setAddress_line_2(mEtAddress2.getText().toString());
+        customerData.setAddress_line_3(mEtAddress3.getText().toString());
+        customerData.setNic(mEtNic.getText().toString());
+        customerData.setTelephone_no(mEtContact.getText().toString());
+        customerData.setEmail(mEtEmail.getText().toString());
+
+        return customerData;
+    }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.activity_register_btn_submit:
+                setCustomerDetailsSave();
                 userRegister();
-                passDataToAddRequest();
+               // passDataToAddRequest();
                 break;
         }
     }

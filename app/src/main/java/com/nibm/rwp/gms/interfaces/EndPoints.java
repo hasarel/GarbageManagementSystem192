@@ -1,6 +1,7 @@
 package com.nibm.rwp.gms.interfaces;
 
 import com.google.gson.JsonElement;
+import com.nibm.rwp.gms.dto.CustomerData;
 import com.nibm.rwp.gms.dto.CustomerRequest;
 import com.nibm.rwp.gms.dto.GarbageCategoryList;
 import com.nibm.rwp.gms.dto.GarbageRequest;
@@ -43,6 +44,10 @@ public interface EndPoints {
     // garbage vehicle type list
     @GET("/vehicle/types")
     Call<List<UcVehicleList>> getUcVehicle();
+
+    // customer register
+    @POST("/customer/create")
+    Call<JsonElement> setCustomerData(@Body CustomerData Data);
 
     // customer request
     @POST("/customer/request")

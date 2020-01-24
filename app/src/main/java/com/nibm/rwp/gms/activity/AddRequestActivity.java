@@ -466,17 +466,6 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
         }
     }
 
-//    private void requestActivityErrorDialog(){
-//        final AlertDialog dialog = new AlertDialog.Builder(AddRequestActivity.this).create();
-//        AppUtill.showCustomStandardAlert(dialog,
-//                AddRequestActivity.this,
-//                getResources().getString(R.string.request_error),
-//                getResources().getString(R.string.request_error_message),
-//                getResources().getDrawable(R.drawable.icons8_error),
-//                null,
-//                getResources().getString(R.string.ok_text), false);
-//    }
-
     private GarbageRequest getCustomerReq() {
         GarbageRequest customerReq = new GarbageRequest();
         customerReq.setUser_id(3);
