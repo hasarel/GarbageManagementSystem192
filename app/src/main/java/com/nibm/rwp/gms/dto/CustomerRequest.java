@@ -1,11 +1,27 @@
 package com.nibm.rwp.gms.dto;
 
 public class CustomerRequest {
-   private String customer_name;
-   private String address_1;
-   private String address_2;
-   private String address_3;
+    private String customer_name;
+    private String address_1;
+    private String address_2;
+    private String address_3;
     private String tele_no;
+    private String longitude;
+    private String latitude;
+
+    public CustomerRequest(String customer_name, String address_1, String address_2, String address_3, String tele_no, String longitude, String latitude) {
+        this.customer_name = customer_name;
+        this.address_1 = address_1;
+        this.address_2 = address_2;
+        this.address_3 = address_3;
+        this.tele_no = tele_no;
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
+
+    public CustomerRequest() {
+
+    }
 
     public String getCustomer_name() {
         return customer_name;
@@ -47,14 +63,21 @@ public class CustomerRequest {
         this.tele_no = tele_no;
     }
 
-    public CustomerRequest(String customer_name, String address_1, String address_2, String address_3, String tele_no) {
-        this.customer_name = customer_name;
-        this.address_1 = address_1;
-        this.address_2 = address_2;
-        this.address_3 = address_3;
-        this.tele_no = tele_no;
+    public String getLongitude() {
+        return longitude;
     }
 
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public  String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
 
 
 }

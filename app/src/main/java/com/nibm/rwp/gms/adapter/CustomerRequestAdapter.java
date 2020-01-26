@@ -50,12 +50,16 @@ public class CustomerRequestAdapter extends RecyclerView.Adapter<CustomerRequest
         holder.mAddress2.setText(customerRequest.getAddress_2());
         holder.mAddress3.setText(customerRequest.getAddress_3());
         holder.mContactNo.setText(customerRequest.getTele_no());
+       // holder.mContactNo.setText(customerRequest.getLatitude());
 
+      //  CustomerRequest req = new CustomerRequest();
+        final Double lat=Double.parseDouble(customerRequest.getLatitude());
+        final Double longTude=Double.parseDouble( customerRequest.getLongitude());
         holder.mLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                        Uri.parse("https://www.google.com/maps/dir/?api=1&destination=6.949669,80.200541"));
+                        Uri.parse("https://www.google.com/maps/dir/?api=1&destination="+longTude+","+lat+""));
                 mCtx.startActivity(intent);
 
                 Toast.makeText(mCtx,"My Position is :" +position,Toast.LENGTH_SHORT).show();

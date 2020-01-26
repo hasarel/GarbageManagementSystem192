@@ -30,7 +30,7 @@ public interface EndPoints {
     Call<List<GarbageCategoryList>> getGarbageList();
 
     //set location to driver
-    @GET("/customer/all/request")
+    @GET("/driver/request/get")
     Call<List<CustomerRequest>> getDriverMap();
 
     // customer request history list
