@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -51,6 +52,7 @@ public class RequestHistoryActivity extends BaseActivity {
     private void setDriverMap(){
 
         EndPoints service = RetrofitClient.getRetrofitInstance().create(EndPoints.class);
+
         Call<List<RequestHistory>> call = service.getRequestHistory();
         call.enqueue(new Callback<List<RequestHistory>>() {
             @Override

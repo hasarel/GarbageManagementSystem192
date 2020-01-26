@@ -18,8 +18,10 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Url;
 
 public interface EndPoints {
+
 
     //maharagama uc area
     @GET("areas/all")
@@ -38,8 +40,12 @@ public interface EndPoints {
     Call<List<RequestHistory>> getRequestHistory();
 
     // customer payment history list
-    @GET("/customer/all/request")
-    Call<List<PaymentHistory>> getPaymentHistory();
+//    @GET("/customer/all/request")
+//    Call<List<PaymentHistory>> getPaymentHistory();
+
+   // @GET("/customer/request/email/")
+    @GET
+    Call<List<PaymentHistory>> getPaymentHistory(@Url String url);
 
     // garbage vehicle type list
     @GET("/vehicle/types")

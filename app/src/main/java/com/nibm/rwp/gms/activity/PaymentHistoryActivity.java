@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -48,8 +49,11 @@ public class PaymentHistoryActivity extends BaseActivity {
 
     private void setDriverMap(){
 
+        SharedPreferences prf = getSharedPreferences("details", MODE_PRIVATE);
+        String email = prf.getString("email", "");
+
         EndPoints service = RetrofitClient.getRetrofitInstance().create(EndPoints.class);
-        Call<List<PaymentHistory>> call = service.getPaymentHistory();
+        Call<List<PaymentHistory>> call = service.getPaymentHistory("/customer/request/email/"+email+"");
         call.enqueue(new Callback<List<PaymentHistory>>() {
             @Override
             public void onResponse(Call<List<PaymentHistory>> call, Response<List<PaymentHistory>> response) {
