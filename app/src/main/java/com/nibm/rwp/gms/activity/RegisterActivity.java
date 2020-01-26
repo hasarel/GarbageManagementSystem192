@@ -79,6 +79,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     public void initView() {
         mBtnRegister = findViewById(R.id.activity_register_btn_submit);
         mEtFname = findViewById(R.id.activity_Register_et_fname);
+        mEtLname = findViewById(R.id.activity_Register_et_lname);
         mEtAddress1 = findViewById(R.id.activity_Register_et_address1);
         mEtAddress2 = findViewById(R.id.activity_Register_et_address2);
         mEtAddress3 = findViewById(R.id.activity_Register_et_address3);
@@ -152,12 +153,13 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
                             hideProgressDialogWithTitle();
                             sendEmailVerificationMessage();
-//                            Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
-//                            startActivity(intent);
+                            Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                            startActivity(intent);
 
-                        } else
-
-                            Toast.makeText(RegisterActivity.this, "Failed !!! ", Toast.LENGTH_SHORT).show();
+                        }
+//                        else
+//
+//                            Toast.makeText(RegisterActivity.this, "Failed !!! ", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -183,7 +185,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         }
     }
 
-    private void setCustomerDetailsSave(){
+    private void sendCustomerReq(){
         try {
             showProgressDialogWithTitle("Uploading....");
             EndPoints service = RetrofitClient.getRetrofitInstance().create(EndPoints.class);
@@ -191,18 +193,26 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             call.enqueue(new Callback<JsonElement>() {
                 @Override
                 public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-                    hideProgressDialogWithTitle();
-                    Toast.makeText(RegisterActivity.this,"Successfully ",Toast.LENGTH_LONG).show();
 
+                    if (response.code()==200){
+
+                        if (response.body()!=null){
+
+                            hideProgressDialogWithTitle();
+                            Toast.makeText(RegisterActivity.this,"Successfully..... ",Toast.LENGTH_LONG).show();
+                           // mEtAddress1.setText(response.body().toString());
+                           // mEtAddress2.setText(response.message());
+                        }
+                    }
                 }
 
                 @Override
                 public void onFailure(Call<JsonElement> call, Throwable t) {
                     Log.i(TAG, t.getMessage());
-                   hideProgressDialogWithTitle();
+                    hideProgressDialogWithTitle();
 
                     String error = t.getMessage();
-                    Toast.makeText(RegisterActivity.this,"Error " +error,Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterActivity.this,"onFailure  " +error,Toast.LENGTH_LONG).show();
                     //  requestActivityErrorDialog();
                 }
             });
@@ -214,6 +224,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private CustomerData getCustomerData(){
         CustomerData customerData = new CustomerData();
         customerData.setFirst_name(mEtFname.getText().toString());
+        customerData.setLast_name(mEtLname.getText().toString());
         customerData.setAddress_line_1(mEtAddress1.getText().toString());
         customerData.setAddress_line_2(mEtAddress2.getText().toString());
         customerData.setAddress_line_3(mEtAddress3.getText().toString());
@@ -228,9 +239,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.activity_register_btn_submit:
-                setCustomerDetailsSave();
+               sendCustomerReq();
                 userRegister();
-               // passDataToAddRequest();
+                passDataToAddRequest();
                 break;
         }
     }

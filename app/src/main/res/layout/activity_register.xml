@@ -69,34 +69,34 @@
 
         </RelativeLayout>
 
-<!--        <RelativeLayout-->
-<!--            android:id="@+id/activity_register_rl_relativeLayout3"-->
-<!--            android:layout_below="@id/activity_register_rl_relativeLayout2"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content">-->
+        <RelativeLayout
+            android:id="@+id/activity_register_rl_relativeLayout3"
+            android:layout_below="@+id/activity_register_rl_relativeLayout2"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-<!--            <com.google.android.material.textfield.TextInputLayout-->
-<!--                android:id="@+id/activity_register_til_lname"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content">-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/activity_register_til_lname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-<!--                <EditText-->
-<!--                    android:id="@+id/activity_Register_et_lname"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:textColor="@color/colorListNormal1Text"-->
-<!--                    android:drawableRight="@drawable/fname"-->
-<!--                    android:hint="@string/activity_register_et_lname"-->
-<!--                    android:inputType="text"-->
-<!--                    android:maxLines="1" />-->
-<!--            </com.google.android.material.textfield.TextInputLayout>-->
+                <EditText
+                    android:id="@+id/activity_Register_et_lname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorListNormal1Text"
+                    android:drawableRight="@drawable/fname"
+                    android:hint="@string/activity_register_et_lname"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-<!--        </RelativeLayout>-->
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/activity_register_rl_relativeLayout4"
-            android:layout_below="@id/activity_register_rl_relativeLayout2"
+            android:layout_below="@id/activity_register_rl_relativeLayout3"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

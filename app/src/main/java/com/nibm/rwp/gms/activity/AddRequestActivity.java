@@ -440,14 +440,17 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
             call.enqueue(new Callback<JsonElement>() {
                 @Override
                 public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-                    //Log.i("onResponse", response.message());
-                    Log.i(TAG, "onResponse");
+                    hideProgressDialogWithTitle();
 
-                    Toast.makeText(AddRequestActivity.this,"Error"+response.toString(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddRequestActivity.this,"Successfully....",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(AddRequestActivity.this,AddPaymentActivity.class);
+                    startActivity(intent);
+                   // mEtAddress1.setText(response.body().toString());
+                   // mEtAddress2.setText(response.code());
 
                     if (response != null){
                         Log.w("RESP", "------- "+response.body());
-                        hideProgressDialogWithTitle();
+
                     }
                 }
 
@@ -471,16 +474,16 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
         customerReq.setUser_id(3);
         customerReq.setCustomer_name(mEtName.getText().toString());
         customerReq.setEmail(mEtEmail.getText().toString());
-        customerReq.setArea_id(mSpUcArea.getId());
-        customerReq.setLatitude(/*mEtLocationLongTiute.getText().toString()*/523);
-        customerReq.setLongitude(/*mEtLocationLatitute.getText().toString()*/1221);
+        customerReq.setArea_id(mSpUcArea.getSelectedItem().toString());
+        customerReq.setLatitude(mEtLocationLongTiute.getText().toString());
+        customerReq.setLongitude(mEtLocationLatitute.getText().toString());
         customerReq.setAddress_1(mEtAddress1.getText().toString());
         customerReq.setAddress_2(mEtAddress2.getText().toString());
         customerReq.setAddress_3(mEtAddress3.getText().toString());
         customerReq.setTele_no(mEtAddress1.getText().toString());
         customerReq.setDescription(mEtAddress1.getText().toString());
-        customerReq.setCategory_id(/*catSpinner.getSelectedItem().toString()*/1);
-        customerReq.setVehicle_type_id(/*mSpUcVehicle.getSelectedItem().toString()*/3);
+        customerReq.setCategory_id(Integer.parseInt(catSpinner.getSelectedItem().toString()));
+        customerReq.setVehicle_type_id(mSpUcVehicle.getSelectedItem().toString());
 
         return  customerReq;
     }
