@@ -15,11 +15,13 @@ import android.os.Looper;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,7 +59,7 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
 
     //Constant
     public static final String TAG = AddRequestActivity.class.getSimpleName();
-
+    public static  int selectedSpinnerValue=0;
     //Ui Components
     private Button mBtnProgress;
     private EditText mEtDescription, mEtLocationLongTiute, mEtName, mEtContactNo, mEtAddress1, mEtAddress2, mEtAddress3, mEtLocationLatitute, mEtEmail;
@@ -368,15 +370,34 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
     private void setupCatRecyclerView(List<GarbageCategoryList> caseList) {
         if (caseList.size() > 0) {
             List<String> list = new ArrayList<>();
+            String[] arrayItems=new String[caseList.size()];
+            final int[] actualValues=new int[caseList.size()];
 
             for (int i = 0; i < caseList.size(); i++) {
                 list.add(caseList.get(i).getName());
+                arrayItems[i]=caseList.get(i).getName();
+                actualValues[i]=Integer.parseInt(caseList.get(i).getId());
             }
+
 
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                     android.R.layout.simple_spinner_item, list);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             catSpinner.setAdapter(dataAdapter);
+
+            catSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> arg0, View arg1,int arg2, long arg3) {
+                    selectedSpinnerValue=actualValues[ arg2];
+                   // Toast.makeText(AddRequestActivity.this, "Select Values"+thePrice, Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
 
         } else {
             Toast.makeText(AddRequestActivity.this, "No any suggestions found", Toast.LENGTH_SHORT).show();
@@ -482,8 +503,9 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
         customerReq.setAddress_3(mEtAddress3.getText().toString());
         customerReq.setTele_no(mEtAddress1.getText().toString());
         customerReq.setDescription(mEtAddress1.getText().toString());
-        customerReq.setCategory_id(Integer.parseInt(catSpinner.getSelectedItem().toString()));
         customerReq.setVehicle_type_id(mSpUcVehicle.getSelectedItem().toString());
+
+       customerReq.setCategory_id(selectedSpinnerValue);
 
         return  customerReq;
     }
