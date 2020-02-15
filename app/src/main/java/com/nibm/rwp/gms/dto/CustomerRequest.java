@@ -9,6 +9,16 @@ public class CustomerRequest {
     private String longitude;
     private String latitude;
 
+    public String getReq_id() {
+        return req_id;
+    }
+
+    public void setReq_id(String req_id) {
+        this.req_id = req_id;
+    }
+
+    private String req_id;
+
     public CustomerRequest(String customer_name, String address_1, String address_2, String address_3, String tele_no, String longitude, String latitude) {
         this.customer_name = customer_name;
         this.address_1 = address_1;

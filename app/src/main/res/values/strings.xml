@@ -3,7 +3,7 @@
 
 
     <!--Activity Forget password-->
-    <string name="activity_forget_password_tv_text">Forgotten Password</string>
+    <string name="activity_forget_password_tv_text">Forget Password</string>
     <string name="activity_forgetn_password_btn_submit">Submit</string>
     <string name="activity_forget_password_et_email">Email</string>
     <!--end of  forget password-->
@@ -17,11 +17,11 @@
     <!--Activity Login-->
     <string name="activity_login_et_username">Username</string>
     <string name="activity_login_et_password">Password</string>
-    <string name="activity_login_tv_forget_password">Forget Password ?</string>
+    <string name="activity_login_tv_forgot_password">Forgot Password ? </string>
     <string name="activity_login_tv_register">New User ? Register Here...</string>
     <string name="activity_login_btn_login">Login</string>
     <string name="activity_login_tv__text">Or Connect Using </string>
-    <string name="activity_login_tv_remainder">Remainder me</string>
+    <string name="activity_login_tv_remainder">Remember me</string>
     <string name="activity_login_btn_faceboook_login">Log in with FaceBook</string>
     <!--End of Login Activity-->
 
@@ -81,6 +81,23 @@
     <string name="activity_add_payment_et_lname">Last name</string>
     <!--End of Add Payment Activity-->
 
+    <!--Activity Add Payment Confirm-->
+    <string name="activity_add_payment_confirm_tv">Payment Details</string>
+    <string name="activity_add_payment_confirm_tv_name">Name</string>
+    <string name="activity_add_payment_confirm_tv_garbage_type">Selected Garbage Category</string>
+    <string name="activity_add_payment_confirm_tv_area_type">Selected Area</string>
+    <string name="activity_add_payment_confirm_tv_vehicle_type">Selected Vehicle</string>
+    <string name="activity_add_payment_confirm_tv_total_amount">Total Amount</string>
+    <string name="activity_add_payment_confirm_btn_confirm">Confirm</string>
+
+    <string name="asteriskred"><font color='#cc0029'>*</font></string>
+
+    <string name="fcm_message">Hiii Hasarel</string>
+    <string name="fcm_message_error">Error</string>
+    <string name="msg_token_fmt">hi</string>
+    <string name="fcm_token">FCM Token: %s</string>
+    <!--End of activity add payment confirm-->
+
     <string name="activity_register">Register</string>
     <string name="activity_forgetPassword">Forget Password</string>
     <string name="activity_addrequest">Add Request</string>
@@ -89,6 +106,7 @@
     <string name="activity_paymenthistoery">Payment History</string>
     <string name="activity_request_history">Request History</string>
     <string name="activity_about">About</string>
+    <string name="acitivty_feedback">Customer Feedback</string>
     <string name="activity_customer_request">Customer Request</string>
 
 
@@ -122,7 +140,7 @@
     <string name="sign_out_message">Are you sure you want to sign out.</string>
     <string name="want_to_proceed_message">Do you want to proceed?</string>
     <string name="fill_all_fields_message">Please fill all fields</string>
-    <string name="fill_email_fields_message">Please fill email field</string>
+    <string name="fill_email_fields_message">Please fill all Required field</string>
     <string name="fill_password_fields_message">Please fill password field</string>
     <string name="email_verification_error">Please Verification Email!</string>
     <string name="email_verification_message">Please check your inbox and follow the instructions...</string>

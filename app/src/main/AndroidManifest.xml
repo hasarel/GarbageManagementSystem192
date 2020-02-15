@@ -18,7 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.CreatePaymentActivity"></activity>
+        <activity android:name=".activity.FeedBackActivity"></activity>
+        <activity android:name=".activity.AddRequestConfirmActivity" />
+        <activity android:name=".activity.CreatePaymentActivity" />
         <activity android:name=".activity.DriverMapActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -48,6 +50,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.HomeActivity" />
+
+        <service android:name=".fcm.MessageService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

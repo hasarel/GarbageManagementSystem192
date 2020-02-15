@@ -13,6 +13,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Looper;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,7 +22,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +48,8 @@ import com.nibm.rwp.gms.listeners.OnCatClickListener;
 import com.nibm.rwp.gms.utill.AppUtill;
 import com.nibm.rwp.gms.utill.RetrofitClient;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +61,11 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
 
     //Constant
     public static final String TAG = AddRequestActivity.class.getSimpleName();
-    public static  int selectedSpinnerValue=0;
+    public static int selectedSpinnerValue = 0;
+    public static int selectedVehicleSpinnerValue = 0;
+    public static int selectedAreaSpinnerValue = 0;
+
+
     //Ui Components
     private Button mBtnProgress;
     private EditText mEtDescription, mEtLocationLongTiute, mEtName, mEtContactNo, mEtAddress1, mEtAddress2, mEtAddress3, mEtLocationLatitute, mEtEmail;
@@ -81,7 +87,10 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
     private RecyclerView mUcVehicleRecycleView;
     private Spinner mSpUcVehicle;
 
+
     private ProgressDialog progressDialog;
+    public String total, name, categorytype, area, vehicle, userid, tests;
+    private String description, names, address1, address2, address3, contact, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +119,7 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
         progressDialog.show();
     }
 
-    private void hideProgressDialogWithTitle() {
+    public void hideProgressDialogWithTitle() {
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.dismiss();
     }
@@ -124,8 +133,15 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        dialog.dismiss();
-                        sendCustomerReq();
+                        if (checkFiledValidation()){
+                            dialog.dismiss();
+                            sendCustomerReq();
+                            Intent intent = new Intent(AddRequestActivity.this, AddRequestConfirmActivity.class);
+                            startActivity(intent);
+                        }else{
+                            Toast.makeText(AddRequestActivity.this,"Error",Toast.LENGTH_LONG).show();
+                        }
+
                     }
                 },
                 null,
@@ -148,6 +164,7 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
         mEtAddress3.setText(address3);
         mEtContactNo.setText(contact);
         mEtEmail.setText(email);
+
     }
 
     @SuppressLint("MissingPermission")
@@ -278,13 +295,47 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
         getGarbageCategoryList();
         getUcAreaList();
         getUcVehicleList();
+
+        description = mEtDescription.getText().toString();
+        names = mEtName.getText().toString();
+        address1 = mEtAddress1.getText().toString();
+        address2 = mEtAddress2.getText().toString();
+        address3 = mEtAddress3.getText().toString();
+        contact = mEtContactNo.getText().toString();
+        email = mEtEmail.getText().toString();
+    }
+
+    private boolean checkFiledValidation() {
+
+        if (TextUtils.isEmpty(description)) {
+            mEtDescription.setError("Please enter Description!");
+
+        } else if (TextUtils.isEmpty(names)) {
+            mEtName.setError("Please enter Name!");
+
+        } else if (TextUtils.isEmpty(address1)) {
+            mEtAddress1.setError("Please enter Address 1!");
+
+        } else if (TextUtils.isEmpty(address2)) {
+            mEtAddress2.setError("Please enter Address 2!");
+
+        } else if (TextUtils.isEmpty(address3)) {
+            mEtAddress3.setError("Please enter Address 3!");
+
+        } else if (TextUtils.isEmpty(contact)) {
+            mEtContactNo.setError("Please enter Contact No!");
+
+        } else if (TextUtils.isEmpty(email)) {
+            mEtEmail.setError("Please enter Email!");
+        }
+        return true;
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.activity_add_request_btn_progress:
-
+                if (checkFiledValidation()==true)
                 confirmDialog();
                 break;
         }
@@ -299,7 +350,6 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
             call.enqueue(new Callback<List<UcArea>>() {
                 @Override
                 public void onResponse(Call<List<UcArea>> call, Response<List<UcArea>> response) {
-                    //Log.i("onResponse", response.message());
                     Log.i(TAG, "onResponse");
 
                     ucAreaList = response.body();
@@ -322,10 +372,26 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
     private void setUcAreaRecycleView(List<UcArea> ucAreas) {
         if (ucAreas.size() > 0) {
             List<String> list = new ArrayList<>();
+            String[] arrayItems = new String[ucAreas.size()];
+            final int[] actualValues = new int[ucAreas.size()];
 
             for (int i = 0; i < ucAreas.size(); i++) {
                 list.add(ucAreas.get(i).getName());
+                arrayItems[i] = ucAreas.get(i).getName();
+                actualValues[i] = Integer.parseInt(ucAreas.get(i).getId());
             }
+
+            mSpUcArea.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                    selectedAreaSpinnerValue = actualValues[arg2];
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
 
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                     android.R.layout.simple_spinner_item, list);
@@ -347,7 +413,6 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
             call.enqueue(new Callback<List<GarbageCategoryList>>() {
                 @Override
                 public void onResponse(Call<List<GarbageCategoryList>> call, Response<List<GarbageCategoryList>> response) {
-                    //Log.i("onResponse", response.message());
                     Log.i(TAG, "onResponse");
 
                     userList = response.body();
@@ -370,15 +435,14 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
     private void setupCatRecyclerView(List<GarbageCategoryList> caseList) {
         if (caseList.size() > 0) {
             List<String> list = new ArrayList<>();
-            String[] arrayItems=new String[caseList.size()];
-            final int[] actualValues=new int[caseList.size()];
+            String[] arrayItems = new String[caseList.size()];
+            final int[] actualValues = new int[caseList.size()];
 
             for (int i = 0; i < caseList.size(); i++) {
                 list.add(caseList.get(i).getName());
-                arrayItems[i]=caseList.get(i).getName();
-                actualValues[i]=Integer.parseInt(caseList.get(i).getId());
+                arrayItems[i] = caseList.get(i).getName();
+                actualValues[i] = Integer.parseInt(caseList.get(i).getId());
             }
-
 
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                     android.R.layout.simple_spinner_item, list);
@@ -387,9 +451,8 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
 
             catSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
-                public void onItemSelected(AdapterView<?> arg0, View arg1,int arg2, long arg3) {
-                    selectedSpinnerValue=actualValues[ arg2];
-                   // Toast.makeText(AddRequestActivity.this, "Select Values"+thePrice, Toast.LENGTH_SHORT).show();
+                public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                    selectedSpinnerValue = actualValues[arg2];
                 }
 
                 @Override
@@ -397,7 +460,6 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
 
                 }
             });
-
 
         } else {
             Toast.makeText(AddRequestActivity.this, "No any suggestions found", Toast.LENGTH_SHORT).show();
@@ -435,12 +497,29 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
     }
 
     private void setUcVehicleListRecyclerView(List<UcVehicleList> vehicleLists) {
+
         if (vehicleLists.size() > 0) {
             List<String> list = new ArrayList<>();
+            String[] arrayItems = new String[vehicleLists.size()];
+            final int[] actualValues = new int[vehicleLists.size()];
 
             for (int i = 0; i < vehicleLists.size(); i++) {
                 list.add(vehicleLists.get(i).getType_code());
+                arrayItems[i] = vehicleLists.get(i).getType_code();
+                actualValues[i] = Integer.parseInt(vehicleLists.get(i).getId());
             }
+
+            mSpUcVehicle.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                    selectedVehicleSpinnerValue = actualValues[arg2];
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
 
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                     android.R.layout.simple_spinner_item, list);
@@ -453,7 +532,7 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
         }
     }
 
-    private void sendCustomerReq(){
+    private void sendCustomerReq() {
         try {
             showProgressDialogWithTitle("Uploading....");
             EndPoints service = RetrofitClient.getRetrofitInstance().create(EndPoints.class);
@@ -461,19 +540,36 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
             call.enqueue(new Callback<JsonElement>() {
                 @Override
                 public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-                    hideProgressDialogWithTitle();
 
-                    Toast.makeText(AddRequestActivity.this,"Successfully....",Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(AddRequestActivity.this,AddPaymentActivity.class);
-                    startActivity(intent);
-                   // mEtAddress1.setText(response.body().toString());
-                   // mEtAddress2.setText(response.code());
+                    if (response.code() == 200) {
 
-                    if (response != null){
-                        Log.w("RESP", "------- "+response.body());
+                        if (response.isSuccessful()) {
 
+                            hideProgressDialogWithTitle();
+//                            Intent intent = new Intent(AddRequestActivity.this, AddRequestConfirmActivity.class);
+//                            startActivity(intent);
+                        }
+                    }
+
+                    if (response != null) {
+
+                        try {
+                            JSONObject root = new JSONObject(response.body().toString());
+
+                            userid = root.getString("customers_request_id");
+                            String test = root.getString("email");
+                            name = root.getString("customer_name");
+                            categorytype = root.getString("category_id");
+                            area = root.getString("area_id");
+                            vehicle = root.getString("vehicle_type_id");
+                            total = root.getString("total_payment");
+
+                        } catch (Exception e) {
+
+                        }
                     }
                 }
+
 
                 @Override
                 public void onFailure(Call<JsonElement> call, Throwable t) {
@@ -481,9 +577,11 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
                     hideProgressDialogWithTitle();
 
                     String error = t.getMessage();
-                    Toast.makeText(AddRequestActivity.this,"Error " +error,Toast.LENGTH_LONG).show();
-                  //  requestActivityErrorDialog();
+                    Toast.makeText(AddRequestActivity.this, "Error " + error, Toast.LENGTH_LONG).show();
+                    //  requestActivityErrorDialog();
                 }
+
+
             });
         } catch (Exception e) {
             Log.i(TAG, "Exception");
@@ -495,20 +593,30 @@ public class AddRequestActivity extends BaseActivity implements View.OnClickList
         customerReq.setUser_id(3);
         customerReq.setCustomer_name(mEtName.getText().toString());
         customerReq.setEmail(mEtEmail.getText().toString());
-        customerReq.setArea_id(mSpUcArea.getSelectedItem().toString());
+        customerReq.setArea_id(selectedAreaSpinnerValue);
         customerReq.setLatitude(mEtLocationLongTiute.getText().toString());
         customerReq.setLongitude(mEtLocationLatitute.getText().toString());
         customerReq.setAddress_1(mEtAddress1.getText().toString());
         customerReq.setAddress_2(mEtAddress2.getText().toString());
         customerReq.setAddress_3(mEtAddress3.getText().toString());
-        customerReq.setTele_no(mEtAddress1.getText().toString());
-        customerReq.setDescription(mEtAddress1.getText().toString());
-        customerReq.setVehicle_type_id(mSpUcVehicle.getSelectedItem().toString());
+        customerReq.setTele_no(mEtContactNo.getText().toString());
+        customerReq.setDescription(mEtDescription.getText().toString());
+        customerReq.setVehicle_type_id(selectedVehicleSpinnerValue);
 
-       customerReq.setCategory_id(selectedSpinnerValue);
+        customerReq.setCategory_id(selectedSpinnerValue);
 
-        return  customerReq;
+        return customerReq;
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        if (mDrawerLayout != null && mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
+//            mDrawerLayout.closeDrawer(Gravity.LEFT);
+//        } else {
+//            super.onBackPressed();
+//            overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
+//        }
+//    }
 
 
     @Override

@@ -49,11 +49,11 @@ public class PaymentHistoryActivity extends BaseActivity {
 
     private void setDriverMap(){
 
-        SharedPreferences prf = getSharedPreferences("details", MODE_PRIVATE);
-        String email = prf.getString("email", "");
+//        SharedPreferences prf = getSharedPreferences("details", MODE_PRIVATE);
+//        String email = prf.getString("email", "");
 
         EndPoints service = RetrofitClient.getRetrofitInstance().create(EndPoints.class);
-        Call<List<PaymentHistory>> call = service.getPaymentHistory("/customer/request/email/"+email+"");
+        Call<List<PaymentHistory>> call = service.getPaymentHistory();
         call.enqueue(new Callback<List<PaymentHistory>>() {
             @Override
             public void onResponse(Call<List<PaymentHistory>> call, Response<List<PaymentHistory>> response) {

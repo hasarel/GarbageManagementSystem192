@@ -188,7 +188,7 @@
                     android:drawableRight="@drawable/nic"
                     android:hint="@string/activity_register_et_nic"
                     android:textColor="@color/colorListNormal1Text"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -213,7 +213,7 @@
                     android:hint="@string/activity_register_et_contactNo"
                     android:drawableRight="@drawable/phone"
                     android:textColor="@color/colorListNormal1Text"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#F4FFF5"
+    android:layout_height="match_parent"
+    tools:context=".activity.AddRequestConfirmActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <RelativeLayout
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_below="@id/toolbar"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_corners_white_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <RelativeLayout
+                android:id="@+id/activity_add_payment_rl_relativeLayout"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="30dp"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/activity_add_payment_confirm_tv"
+                    android:textColor="@color/colorBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/activity_addPayment_rl_relativeLayout1"
+                android:layout_below="@id/activity_add_payment_rl_relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_marginTop="30dp"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/activity_add_payment_til"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/activity_add_payment_confirm_et_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/activity_add_payment_confirm_tv_name"
+                        android:textColor="@color/colorListNormal1Text"
+                        android:inputType="text"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/activity_addPayment_rl_relativeLayout2"
+                android:layout_below="@id/activity_addPayment_rl_relativeLayout1"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/activity_add_payment_tilt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/activity_add_payment_confirm_et_Garbage_category"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/activity_add_payment_confirm_tv_garbage_type"
+                        android:textColor="@color/colorListNormal1Text"
+                        android:inputType="text"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/activity_addPayment_rl_relativeLayout3"
+                android:layout_below="@id/activity_addPayment_rl_relativeLayout2"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/activity_add_payment_til_security_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/activity_add_payment_confirm_et_area_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/activity_add_payment_confirm_tv_area_type"
+                        android:textColor="@color/colorListNormal1Text"
+                        android:inputType="text"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/activity_addPayment_rl_relativeLayout4"
+                android:layout_below="@id/activity_addPayment_rl_relativeLayout3"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/activity_add_payment_til_gsecurity_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/activity_add_payment_confirm_et_vehicle_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/activity_add_payment_confirm_tv_vehicle_type"
+                        android:textColor="@color/colorListNormal1Text"
+                        android:inputType="text"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/activity_addPayment_rl_relativeLayout5"
+                android:layout_below="@id/activity_addPayment_rl_relativeLayout4"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/activity_add_payment_til_gsecurity_cofde"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/activity_add_payment_confirm_et_total"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/activity_add_payment_confirm_tv_total_amount"
+                        android:textColor="@color/colorListNormal1Text"
+                        android:inputType="text"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/activity_add_payment_rl_relativeLayout5"
+                android:layout_below="@id/activity_addPayment_rl_relativeLayout5"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/activity_add_payment_confirm_btn_done_payment"
+                    android:text="@string/activity_add_payment_confirm_btn_confirm"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/rounded_corners_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

@@ -160,7 +160,7 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/activity_add_payment_btn_done"
+                android:id="@+id/activity_add_payment_btn_doneeeeeeeeeee"
                 android:text="@string/activity_add_payment_btn_done"
                 android:textColor="@color/colorWhite"
                 android:background="@drawable/rounded_corners_button"

@@ -20,6 +20,7 @@ import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -100,6 +101,15 @@ public class AppUtill {
             return activeNetworks.isConnectedOrConnecting();
         }
         return false;
+    }
+
+    // hide keyboard
+    public static void hideDefaultKeyboard(Activity activity) {
+        try {
+            InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+        } catch (Exception e) {
+        }
     }
 
 
@@ -233,157 +243,6 @@ public class AppUtill {
         dialog.getWindow().setLayout(width - 80, WindowManager.LayoutParams.WRAP_CONTENT);
 
     }
-
-//    // confirm alert dialog box (Updated UI)
-//    public static void showCustomConfirmAlert(final AlertDialog dialog, Activity activity, String title, String message,
-//                                              View.OnClickListener yesClickListener, View.OnClickListener noClickListener,
-//                                              String yesText, String noText, boolean cancelableState) {
-//
-//        LayoutInflater inflater = activity.getLayoutInflater();
-//        final View dialogView = inflater.inflate(R.layout.dialog_custom_confirm_alert, null);
-//        dialogView.setLayerType(View.LAYER_TYPE_SOFTWARE, null); // This line is for hardware acceleration false
-//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        dialog.setView(dialogView);
-//        dialog.setCancelable(cancelableState);
-//
-//        TextView tvTitle = dialogView.findViewById(R.id.custom_alert_tv_title);
-//        TextView tvMessage = dialogView.findViewById(R.id.custom_alert_tv_description);
-//        Button btnCancel = dialogView.findViewById(R.id.custom_alert_btn_cancel);
-//        Button btnSettings = dialogView.findViewById(R.id.custom_alert_btn_settings);
-//        btnCancel.setOnClickListener(noClickListener);
-//        btnSettings.setOnClickListener(yesClickListener);
-//
-//        if (noClickListener == null)
-//            btnCancel.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    dialog.dismiss();
-//                }
-//            });
-//
-//        if (yesClickListener == null)
-//            btnSettings.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    dialog.dismiss();
-//                }
-//            });
-//
-//        if (title.isEmpty()) {
-//            tvTitle.setVisibility(View.GONE);
-//        } else {
-//            tvTitle.setText(title);
-//        }
-//
-//        tvMessage.setText(message);
-//        btnCancel.setText(noText);
-//        btnSettings.setText(yesText);
-//
-//        Display display = activity.getWindowManager().getDefaultDisplay();
-//        Point size = new Point();
-//        display.getSize(size);
-//        int width = size.x;
-//        Log.i("Screen Width: ", "" + width);
-//
-//        boolean mTabletDevice = activity.getResources().getBoolean(R.bool.isTablet);
-//
-//        if (mTabletDevice) {
-//            UiUtil.setTextViewFontSizeBasedOnScreenDensity(activity, tvTitle, 60.0, true);
-//            UiUtil.setTextViewFontSizeBasedOnScreenDensity(activity, tvMessage, 65.0, false);
-//            UiUtil.setButtonFontSizeBasedOnScreenDensity(activity, btnCancel, 63.0, Typeface.BOLD);
-//            UiUtil.setButtonFontSizeBasedOnScreenDensity(activity, btnSettings, 63.0, Typeface.BOLD);
-//        } else {
-//            UiUtil.setTextViewFontSizeBasedOnScreenDensity(activity, tvTitle, 22.0, true);
-//            UiUtil.setTextViewFontSizeBasedOnScreenDensity(activity, tvMessage, 27.0, false);
-//            UiUtil.setButtonFontSizeBasedOnScreenDensity(activity, btnCancel, 25.0, Typeface.BOLD);
-//            UiUtil.setButtonFontSizeBasedOnScreenDensity(activity, btnSettings, 25.0, Typeface.BOLD);
-//        }
-//
-//        dialog.show();
-//        dialog.getWindow().setLayout(width - 80, WindowManager.LayoutParams.WRAP_CONTENT);
-//    }
-//
-//    // custom scrollable text-view alert dialog box (Updated UI)
-//    public static void showCustomScrollableAlert(final AlertDialog dialog, Activity activity, String title, String message,
-//                                                 Drawable imageIconResource, View.OnClickListener buttonClickListener,
-//                                                 String buttonText, boolean cancelableState) {
-//        LayoutInflater inflater = activity.getLayoutInflater();
-//        final View dialogView = inflater.inflate(R.layout.dialog_custom_scrollable_text_view_alert, null);
-//        dialogView.setLayerType(View.LAYER_TYPE_SOFTWARE, null); // This line is for hardware acceleration false
-//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        dialog.setView(dialogView);
-//        dialog.setCancelable(cancelableState);
-//
-//        TextView tvTitle = dialogView.findViewById(R.id.dialog_custom_scrollable_text_view_alert_tv_title_text);
-//        TextView tvMessage = dialogView.findViewById(R.id.dialog_custom_scrollable_text_view_alert_tv_message);
-//        ImageView ivIcon = dialogView.findViewById(R.id.dialog_custom_scrollable_text_view_alert_iv_icon);
-//        Button btnButton = dialogView.findViewById(R.id.dialog_custom_scrollable_text_view_alert_btn_button);
-//        btnButton.setOnClickListener(buttonClickListener);
-//
-//        if (buttonClickListener == null)
-//            btnButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    dialog.dismiss();
-//                }
-//            });
-//        ivIcon.setBackground(imageIconResource);
-//        tvTitle.setText(title);
-//        tvMessage.setText(message);
-//        btnButton.setText(buttonText);
-//
-//        UiUtil.setTextViewFontSizeBasedOnScreenDensity(activity, tvTitle, 60.0, true);
-//        UiUtil.setButtonFontSizeBasedOnScreenDensity(activity, btnButton, 63.0, Typeface.BOLD);
-//
-//        dialog.show();
-//        dialog.getWindow().setLayout(660, WindowManager.LayoutParams.WRAP_CONTENT);
-//    }
-
-//    public static void makeTextViewResizable(final TextView tv, final int maxLine, final String expandText, final boolean viewMore) {
-//
-//        if (tv.getTag() == null) {
-//            tv.setTag(tv.getText());
-//        }
-//        ViewTreeObserver vto = tv.getViewTreeObserver();
-//        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-//
-//            @SuppressWarnings("deprecation")
-//            @Override
-//            public void onGlobalLayout() {
-//
-//                ViewTreeObserver obs = tv.getViewTreeObserver();
-//                obs.removeGlobalOnLayoutListener(this);
-//                if (maxLine == 0) {
-//                    int lineEndIndex = tv.getLayout().getLineEnd(0);
-//                    String text = tv.getText().subSequence(0, lineEndIndex - expandText.length() + 1) + " " + expandText;
-//                    tv.setText(text);
-//                    tv.setMovementMethod(LinkMovementMethod.getInstance());
-//                    tv.setText(
-//                            addClickablePartTextViewResizable(Html.fromHtml(tv.getText().toString()), tv, maxLine, expandText,
-//                                    viewMore), TextView.BufferType.SPANNABLE);
-//                } else if (maxLine > 0 && tv.getLineCount() >= maxLine) {
-//                    int lineEndIndex = tv.getLayout().getLineEnd(maxLine - 1);
-//                    String text = tv.getText().subSequence(0, lineEndIndex - expandText.length() + 1) + " " + expandText;
-//                    tv.setText(text);
-//                    tv.setMovementMethod(LinkMovementMethod.getInstance());
-//                    tv.setText(
-//                            addClickablePartTextViewResizable(Html.fromHtml(tv.getText().toString()), tv, maxLine, expandText,
-//                                    viewMore), TextView.BufferType.SPANNABLE);
-//                } else {
-//                    int lineEndIndex = tv.getLayout().getLineEnd(tv.getLayout().getLineCount() - 1);
-//                    // String text = tv.getText().subSequence(0, lineEndIndex) + " " + expandText;
-//                    String text = tv.getText().toString();
-//                    tv.setText(text);
-//                    tv.setMovementMethod(LinkMovementMethod.getInstance());
-//                    /*tv.setText(
-//                            addClickablePartTextViewResizable(Html.fromHtml(tv.getText().toString()), tv, lineEndIndex, expandText,
-//                                    viewMore), TextView.BufferType.SPANNABLE);*/
-//                    tv.setText(tv.getText().toString());
-//                }
-//            }
-//        });
-//
-//    }
 
 
     public static void openPlayStore(Context context, String appPackageName) {

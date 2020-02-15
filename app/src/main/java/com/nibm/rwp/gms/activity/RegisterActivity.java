@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -41,6 +42,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private EditText mEtFname, mEtLname, mEtAddress1, mEtAddress2, mEtAddress3, mEtContact, mEtEmail, mEtPassword, mEtNic;
     private Button mBtnRegister;
     private ProgressDialog progressDialog;
+    private TextInputLayout fname,lname,address1,nic,contact,email,password;
 
     public FirebaseAuth mAuth;
 
@@ -88,6 +90,25 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         mEtNic = findViewById(R.id.activity_Register_et_nic);
         mEtPassword = findViewById(R.id.activity_Register_et_password);
         mBtnRegister.setOnClickListener(this);
+
+        fname = findViewById(R.id.activity_login_til_fname);
+        fname.setHint(fname.getHint()+" "+getString(R.string.asteriskred));
+        lname = findViewById(R.id.activity_register_til_lname);
+        lname.setHint(lname.getHint()+" "+getString(R.string.asteriskred));
+        address1 = findViewById(R.id.activity_register_til_address1);
+        address1.setHint(address1.getHint()+" "+getString(R.string.asteriskred));
+        nic = findViewById(R.id.activity_register_til_nic);
+        nic.setHint(nic.getHint()+" "+getString(R.string.asteriskred));
+        contact = findViewById(R.id.activity_register_til_contactNo);
+        contact.setHint(contact.getHint()+" "+getString(R.string.asteriskred));
+        email = findViewById(R.id.activity_register_til_email);
+        email.setHint(email.getHint()+" "+getString(R.string.asteriskred));
+        password = findViewById(R.id.activity_register_til_password);
+        password.setHint(password.getHint()+" "+getString(R.string.asteriskred));
+
+
+//        textInputLayout = findViewById(R.id.activity_login_til_username);
+//        textInputLayout.setHint(textInputLayout.getHint()+" "+getString(R.string.asteriskred));
     }
 
     public void passDataToAddRequest() {
@@ -113,10 +134,103 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     public void userRegister() {
 
-        String email, password;
+        String email, password,fname,lname,address1,address2,address3,nic,contact;
 
         email = mEtEmail.getText().toString();
         password = mEtPassword.getText().toString();
+        fname = mEtFname.getText().toString();
+        lname = mEtLname.getText().toString();
+        address1 = mEtAddress1.getText().toString();
+        address2 = mEtAddress2.getText().toString();
+        address3 = mEtAddress3.getText().toString();
+        nic = mEtNic.getText().toString();
+        contact = mEtContact.getText().toString();
+
+
+
+        if (TextUtils.isEmpty(contact)) {
+            final AlertDialog dialog = new AlertDialog.Builder(RegisterActivity.this).create();
+            AppUtill.showCustomStandardAlert(dialog,
+                    RegisterActivity.this,
+                    getResources().getString(R.string.alert_warning_text),
+                    getResources().getString(R.string.fill_email_fields_message),
+                    getResources().getDrawable(R.drawable.icons8_error),
+                    null,
+                    getResources().getString(R.string.ok_text), false);
+            return;
+        }
+
+        if (TextUtils.isEmpty(nic)) {
+            final AlertDialog dialog = new AlertDialog.Builder(RegisterActivity.this).create();
+            AppUtill.showCustomStandardAlert(dialog,
+                    RegisterActivity.this,
+                    getResources().getString(R.string.alert_warning_text),
+                    getResources().getString(R.string.fill_email_fields_message),
+                    getResources().getDrawable(R.drawable.icons8_error),
+                    null,
+                    getResources().getString(R.string.ok_text), false);
+            return;
+        }
+
+        if (TextUtils.isEmpty(address3)) {
+            final AlertDialog dialog = new AlertDialog.Builder(RegisterActivity.this).create();
+            AppUtill.showCustomStandardAlert(dialog,
+                    RegisterActivity.this,
+                    getResources().getString(R.string.alert_warning_text),
+                    getResources().getString(R.string.fill_email_fields_message),
+                    getResources().getDrawable(R.drawable.icons8_error),
+                    null,
+                    getResources().getString(R.string.ok_text), false);
+            return;
+        }
+
+        if (TextUtils.isEmpty(address2)) {
+            final AlertDialog dialog = new AlertDialog.Builder(RegisterActivity.this).create();
+            AppUtill.showCustomStandardAlert(dialog,
+                    RegisterActivity.this,
+                    getResources().getString(R.string.alert_warning_text),
+                    getResources().getString(R.string.fill_email_fields_message),
+                    getResources().getDrawable(R.drawable.icons8_error),
+                    null,
+                    getResources().getString(R.string.ok_text), false);
+            return;
+        }
+
+        if (TextUtils.isEmpty(address1)) {
+            final AlertDialog dialog = new AlertDialog.Builder(RegisterActivity.this).create();
+            AppUtill.showCustomStandardAlert(dialog,
+                    RegisterActivity.this,
+                    getResources().getString(R.string.alert_warning_text),
+                    getResources().getString(R.string.fill_email_fields_message),
+                    getResources().getDrawable(R.drawable.icons8_error),
+                    null,
+                    getResources().getString(R.string.ok_text), false);
+            return;
+        }
+
+        if (TextUtils.isEmpty(lname)) {
+            final AlertDialog dialog = new AlertDialog.Builder(RegisterActivity.this).create();
+            AppUtill.showCustomStandardAlert(dialog,
+                    RegisterActivity.this,
+                    getResources().getString(R.string.alert_warning_text),
+                    getResources().getString(R.string.fill_email_fields_message),
+                    getResources().getDrawable(R.drawable.icons8_error),
+                    null,
+                    getResources().getString(R.string.ok_text), false);
+            return;
+        }
+
+        if (TextUtils.isEmpty(fname)) {
+            final AlertDialog dialog = new AlertDialog.Builder(RegisterActivity.this).create();
+            AppUtill.showCustomStandardAlert(dialog,
+                    RegisterActivity.this,
+                    getResources().getString(R.string.alert_warning_text),
+                    getResources().getString(R.string.fill_email_fields_message),
+                    getResources().getDrawable(R.drawable.icons8_error),
+                    null,
+                    getResources().getString(R.string.ok_text), false);
+            return;
+        }
 
         if (TextUtils.isEmpty(email)) {
             final AlertDialog dialog = new AlertDialog.Builder(RegisterActivity.this).create();
@@ -157,9 +271,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                             startActivity(intent);
 
                         }
-//                        else
-//
-//                            Toast.makeText(RegisterActivity.this, "Failed !!! ", Toast.LENGTH_SHORT).show();
+                        else
+
+                            Toast.makeText(RegisterActivity.this, "This Email Alredy Registered..!!! ", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -177,7 +291,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
                     } else {
                         String error = task.getException().toString();
-                        Toast.makeText(RegisterActivity.this,"Error is :"+error,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this,"This Email Alredy Registered..!!!",Toast.LENGTH_SHORT).show();
 
                     }
                 }
@@ -200,8 +314,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
                             hideProgressDialogWithTitle();
                             Toast.makeText(RegisterActivity.this,"Successfully..... ",Toast.LENGTH_LONG).show();
-                           // mEtAddress1.setText(response.body().toString());
-                           // mEtAddress2.setText(response.message());
                         }
                     }
                 }

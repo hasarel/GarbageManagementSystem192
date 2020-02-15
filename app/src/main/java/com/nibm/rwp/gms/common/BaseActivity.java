@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.nibm.rwp.gms.activity.AboutActivity;
+import com.nibm.rwp.gms.activity.FeedBackActivity;
 import com.nibm.rwp.gms.activity.HomeActivity;
 import com.nibm.rwp.gms.R;
 import com.nibm.rwp.gms.activity.LoginActivity;
@@ -98,7 +99,13 @@ public class BaseActivity extends AppCompatActivity implements DrawerFragment.Fr
                     AppUtill.startActivityFromDrawer(activity, AboutActivity.class);
                 }
                 break;
-            case 4:// Logout
+            case 4:
+                if (!activity.getClass().getSimpleName().equals(FeedBackActivity.class.getSimpleName())) {
+                    AppUtill.startActivityFromDrawer(activity, FeedBackActivity.class);
+                }
+                break;
+
+            case 5:// Logout
                 final Activity innerActivity = activity;
                 final AlertDialog dialog = new AlertDialog.Builder(activity).create();
                 AppUtill.showCustomConfirmAlert(dialog, activity, getResources().getString(R.string.sign_out_text), getResources().getString(R.string.sign_out_message),

@@ -10,12 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,6 +32,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText mEtemail, mEtpassword;
     private boolean emailChecker;
     private ProgressDialog progressDialog;
+    private TextInputLayout textInputLayout;
+    private TextInputLayout textInputLayoutPassword;
 
     public FirebaseAuth mAuth;
 
@@ -135,7 +139,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                startActivity(intent);
            }
 
-           showProgressDialogWithTitle("Login is Starting Now....");
+           showProgressDialogWithTitle("Please waite while we get things Ready");
            mAuth.signInWithEmailAndPassword(email, password)
                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                        @Override
@@ -146,6 +150,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                userLoginVerifyEmailAddress();
 
                            } else {
+
+                               Toast.makeText(LoginActivity.this,"Please check your Email or Password... ",Toast.LENGTH_LONG).show();
 
                                hideProgressDialogWithTitle();
 
@@ -183,6 +189,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mTvRegister.setOnClickListener(this);
         mTvForgetPassword.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
+
+
+        textInputLayout = findViewById(R.id.activity_login_til_username);
+        textInputLayout.setHint(textInputLayout.getHint()+" "+getString(R.string.asteriskred));
+        textInputLayoutPassword = findViewById(R.id.activity_login_til_account);
+        textInputLayoutPassword.setHint(textInputLayoutPassword.getHint()+" "+"*");
+
+
     }
 
     public void moveRegisterActivity() {

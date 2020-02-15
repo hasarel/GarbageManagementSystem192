@@ -5,6 +5,7 @@ import com.nibm.rwp.gms.dto.CustomerData;
 import com.nibm.rwp.gms.dto.CustomerRequest;
 import com.nibm.rwp.gms.dto.GarbageCategoryList;
 import com.nibm.rwp.gms.dto.GarbageRequest;
+import com.nibm.rwp.gms.dto.PaymentGatway;
 import com.nibm.rwp.gms.dto.PaymentHistory;
 import com.nibm.rwp.gms.dto.RequestHistory;
 import com.nibm.rwp.gms.dto.UcArea;
@@ -40,12 +41,11 @@ public interface EndPoints {
     Call<List<RequestHistory>> getRequestHistory();
 
     // customer payment history list
-//    @GET("/customer/all/request")
-//    Call<List<PaymentHistory>> getPaymentHistory();
+    @GET("/customer/all/request")
+    Call<List<PaymentHistory>> getPaymentHistory();
 
-   // @GET("/customer/request/email/")
-    @GET
-    Call<List<PaymentHistory>> getPaymentHistory(@Url String url);
+//    @GET("/customer/all/request/")
+//    Call<List<PaymentHistory>> getPaymentHistory(@Url String url);
 
     // garbage vehicle type list
     @GET("/vehicle/types")
@@ -58,5 +58,9 @@ public interface EndPoints {
     // customer request
     @POST("/customer/request")
     Call<JsonElement> setCustomerRequest(@Body GarbageRequest req);
+
+    //payment transaction
+    @POST("/payment/approve")
+    Call<JsonElement> setPaymentGatway(@Body PaymentGatway paymentGatway);
 
 }

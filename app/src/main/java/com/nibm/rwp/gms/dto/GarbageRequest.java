@@ -4,7 +4,7 @@ public class GarbageRequest {
 
     private String customer_name;
     private String email;
-    private String area_id;
+    private int area_id;
     private String  longitude;
     private String  latitude;
     private String address_1;
@@ -13,14 +13,15 @@ public class GarbageRequest {
     private String tele_no;
     private String description;
     private int category_id;
-    private String vehicle_type_id;
+    private int vehicle_type_id;
     private int user_id;
 
-    public String getArea_id() {
+
+    public int getArea_id() {
         return area_id;
     }
 
-    public void setArea_id(String area_id) {
+    public void setArea_id(int area_id) {
         this.area_id = area_id;
     }
 
@@ -64,11 +65,11 @@ public class GarbageRequest {
 
     }
 
-    public String getVehicle_type_id() {
+    public int getVehicle_type_id() {
         return vehicle_type_id;
     }
 
-    public void setVehicle_type_id(String vehicle_type_id) {
+    public void setVehicle_type_id(int vehicle_type_id) {
         this.vehicle_type_id = vehicle_type_id;
     }
 
@@ -131,8 +132,9 @@ public class GarbageRequest {
 
 
 
-    public GarbageRequest( String customer_name, String email, String area_id, String longitude, String latitude,
-                          String address_1, String address_2, String address_3, String tele_no, String description, int category_id, String vehicle_type_id) {
+    public GarbageRequest( String customer_name, String email, int area_id, String longitude, String latitude,
+                          String address_1, String address_2, String address_3, String tele_no, String description,
+                           int category_id, int vehicle_type_id) {
         this.customer_name = customer_name;
         this.email = email;
         this.area_id = area_id;

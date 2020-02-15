@@ -49,7 +49,9 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
             holder.mIvItemIcon.setBackground(mContext.getResources().getDrawable(R.drawable.activityhistory));
         }else if (navigationItem.getTitle().equals(AppConst.NAV_ITEM_ABOUT)) {
             holder.mIvItemIcon.setBackground(mContext.getResources().getDrawable(R.drawable.about));
-        } else if (navigationItem.getTitle().equals(AppConst.NAV_ITEM_Logout)) {
+        } else if (navigationItem.getTitle().equals(AppConst.NAV_ITEM_FEEDBACK)) {
+            holder.mIvItemIcon.setBackground(mContext.getResources().getDrawable(R.drawable.feedback));
+        }else if (navigationItem.getTitle().equals(AppConst.NAV_ITEM_Logout)) {
             holder.mIvItemIcon.setBackground(mContext.getResources().getDrawable(R.drawable.logout));
         }
 

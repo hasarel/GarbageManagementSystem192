@@ -7,6 +7,7 @@ public class AppConst {
     public static final String NAV_ITEM_REQUEST_HISTORY = "Request History";
     public static final String NAV_ITEM_PAYMENT_HISTORY= "Payment History";
     public static final String NAV_ITEM_ABOUT = "About";
+    public static final String NAV_ITEM_FEEDBACK = "FeedBack";
     public static final String NAV_ITEM_Logout = "Logout";
 
 }
